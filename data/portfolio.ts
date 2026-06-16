@@ -191,7 +191,7 @@ export const hobbies: Hobby[] = [
     img: "/assets/hobby-badminton.jpg",
   },
   {
-    name: "Football & Sport",
+    name: "Team Sports",
     tag: "Shared wins",
     blurb:
       "An athlete at heart. Team sport feeds my love of coordination and shared victory.",

@@ -199,3 +199,8 @@
 .topGroup {
   margin-top: 54px;
 }
+
+@keyframes shimmerSweep {
+  0% { transform: translateX(-130%) skewX(-18deg); }
+  55%, 100% { transform: translateX(360%) skewX(-18deg); }
+}

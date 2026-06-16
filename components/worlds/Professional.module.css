@@ -487,3 +487,35 @@
 .crossBtn:hover {
   box-shadow: 0 12px 30px -10px rgba(255, 183, 197, 0.7);
 }
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(46px, -32px) scale(1.14); }
+}
+@keyframes blobFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-52px, 30px) scale(1.16); }
+}
+@keyframes gridDrift {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 64px 64px, 64px 64px; }
+}
+@keyframes scanMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 220px; }
+}
+@keyframes titleGlitch {
+  0%, 100% { text-shadow: 2px 0 #ff2e97, -2px 0 #00ffd0; }
+  48% { text-shadow: 2px 0 #ff2e97, -2px 0 #00ffd0; }
+  49% { text-shadow: -6px 0 #ff2e97, 6px 0 #00ffd0; }
+  50% { text-shadow: 5px 0 #00ffd0, -5px 0 #ff2e97; }
+  51% { text-shadow: 2px 0 #ff2e97, -2px 0 #00ffd0; }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}

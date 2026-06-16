@@ -233,7 +233,6 @@ body {
 /* ---- Responsive (verbatim attribute overrides) ---- */
 @media (max-width: 780px) {
   [data-hero-name] { font-size: 46px !important; }
-  [data-landingband] { display: none !important; }
   [data-stack] { flex-direction: column !important; }
   [data-door] { min-height: 340px !important; }
   [data-pad] { padding-left: 22px !important; padding-right: 22px !important; }

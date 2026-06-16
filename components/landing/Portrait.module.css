@@ -40,3 +40,11 @@
   object-fit: cover;
   display: block;
 }
+
+@keyframes bobSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+@keyframes ringSpin {
+  to { transform: rotate(360deg); }
+}
