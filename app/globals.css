@@ -104,6 +104,36 @@ body {
   color: #04110d;
 }
 
+/* ---- Custom scrollbar: thin, accent-tinted, floats off the edge ---- */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 255, 208, 0.45) transparent;
+}
+/* WebKit / Chromium */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  /* the transparent border + padding-box clip makes the visible thumb ~6px,
+     so it reads as a small floating bar rather than filling the gutter */
+  background: rgba(0, 255, 208, 0.35);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 208, 0.6);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 /* ---- Reveal system (global) ---- */
 [data-reveal] {
   transition: opacity 1s var(--ease-reveal), transform 1s var(--ease-reveal);
