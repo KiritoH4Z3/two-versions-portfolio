@@ -1,0 +1,20 @@
+.cell {
+  background: #0c141d;
+  padding: 26px 18px;
+  text-align: center;
+}
+.num {
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 40px);
+  color: #00ffd0;
+  line-height: 1;
+  text-shadow: 0 0 18px rgba(0, 255, 208, 0.4);
+}
+.label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  color: #7f95a0;
+  margin-top: 8px;
+  text-transform: uppercase;
+}

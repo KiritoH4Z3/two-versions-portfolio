@@ -1,0 +1,42 @@
+.wrap {
+  position: relative;
+  animation: bobSlow 6s ease-in-out infinite;
+}
+.glow {
+  position: absolute;
+  inset: -22px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 183, 197, 0.35),
+    rgba(0, 255, 208, 0.16),
+    transparent 70%
+  );
+  filter: blur(8px);
+}
+.ring {
+  position: absolute;
+  inset: -9px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #ffb7c5,
+    #ff9e7d,
+    #ffd89b,
+    #00ffd0,
+    #6b5b95,
+    #ffb7c5
+  );
+  opacity: 0.6;
+  filter: blur(1px);
+  animation: ringSpin 14s linear infinite;
+  pointer-events: none;
+}
+.img {
+  position: relative;
+  width: 188px;
+  height: 188px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}

@@ -1,0 +1,254 @@
+/* ============================================================
+   Global stylesheet — ported from the prototype <head><style>.
+   Keyframes + the [data-reveal] system MUST live here (global):
+   CSS Modules would hash keyframe names and break the inline
+   `animation:` references, and the IntersectionObserver toggles
+   the bare [data-reveal] attribute across many components.
+   ============================================================ */
+
+/* ---- Design tokens ---- */
+:root {
+  /* fonts (next/font sets the --font-* vars on <html>) */
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-display: var(--font-chakra), "Chakra Petch", sans-serif;
+  --font-mono: var(--font-jbmono), "JetBrains Mono", ui-monospace, monospace;
+  --font-body: var(--font-manrope), "Manrope", system-ui, sans-serif;
+
+  /* dark / cyber */
+  --bg-dark: #08090c;
+  --grid-base: #0a0e14;
+  --panel-1: #0e1822;
+  --panel-2: #0c141d;
+  --panel-3: #0a1016;
+  --panel-4: #0f1c26;
+  --cyan: #00ffd0;
+  --cyan-light: #7cffe9;
+  --cyan-dust: #7fe9df;
+  --magenta: #ff2e97;
+  --amber: #ffd89b;
+  --cyber-text-bright: #eaf6f6;
+  --cyber-text: #c9d6e0;
+  --cyber-text-muted: #9fb2b8;
+  --cyber-text-muted2: #9fb8b6;
+  --cyber-text-dim: #bcccd2;
+  --cyber-mono-muted: #5f7d86;
+  --cyber-mono-muted2: #7f95a0;
+  --cyber-mono-cyan-body: #7fb8b2;
+  --cyber-teal-soft: #cfe9e6;
+
+  /* landing neutrals */
+  --landing-eyebrow: #8fa0ad;
+  --landing-body: #c7d3da;
+  --landing-intro: #dbe4ea;
+  --landing-h-bright: #f2f5f7;
+  --landing-scroll: #7f8e9a;
+  --landing-chevron: #9fb0bd;
+  --landing-marquee: #94a6b2;
+  --landing-doorsub: #9fb0bd;
+
+  /* garden */
+  --garden-ink: #4a3258;
+  --garden-purple: #6b5b95;
+  --garden-body: #5a4258;
+  --garden-body2: #5a3f5e;
+  --garden-text: #4a3b52;
+  --garden-rose: #c98ba8;
+  --garden-coral: #ff9e7d;
+  --garden-pink: #ffb7c5;
+  --garden-eyebrow: #9a6a7e;
+  --garden-cream: #ffe7d6;
+  --hobby-tag: #8f5872; /* deliberate user edit — keep exactly */
+
+  /* gradients */
+  --grad-garden-bg: linear-gradient(180deg, #ffe9d2 0%, #ffd9c9 14%, #ffc6c6 30%, #ffb7c5 48%, #d69bb6 68%, #9b83a8 84%, #6b5b95 100%);
+  --grad-human-door: linear-gradient(160deg, #ffe3c4 0%, #ffc9c2 34%, #ffb7c5 60%, #c98ba8 82%, #6b5b95 100%);
+  --grad-pro-door: linear-gradient(160deg, #0a0e14, #0c141d 60%, #08100f);
+  --grad-resume-btn: linear-gradient(120deg, #00ffd0, #7cffe9);
+  --grad-human-cross-btn: linear-gradient(120deg, #ffb7c5, #ffd89b);
+
+  /* radii */
+  --radius-pill: 999px;
+  --radius-card-lg: 26px;
+  --radius-card: 24px;
+  --radius-card-md: 22px;
+  --radius-card-sm: 20px;
+  --radius-card-xs: 18px;
+  --radius-16: 16px;
+  --radius-14: 14px;
+  --radius-10: 10px;
+  --radius-8: 8px;
+  --radius-6: 6px;
+  --radius-4: 4px;
+
+  /* easings + effects */
+  --ease-reveal: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-door: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --rgb-split: 2px 0 #ff2e97, -2px 0 #00ffd0;
+}
+
+/* ---- Reset ---- */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #08090c;
+  font-family: var(--font-body);
+}
+::selection {
+  background: #00ffd0;
+  color: #04110d;
+}
+
+/* ---- Reveal system (global) ---- */
+[data-reveal] {
+  transition: opacity 1s var(--ease-reveal), transform 1s var(--ease-reveal);
+}
+[data-reveal="0"] {
+  opacity: 0;
+  transform: translateY(34px) scale(0.992);
+}
+[data-reveal="1"] {
+  opacity: 1;
+  transform: none;
+}
+[data-cascade] > [data-reveal]:nth-child(2) {
+  transition-delay: 0.08s;
+}
+[data-cascade] > [data-reveal]:nth-child(3) {
+  transition-delay: 0.16s;
+}
+[data-cascade] > [data-reveal]:nth-child(4) {
+  transition-delay: 0.24s;
+}
+[data-cascade] > [data-reveal]:nth-child(5) {
+  transition-delay: 0.32s;
+}
+[data-cascade] > [data-reveal]:nth-child(6) {
+  transition-delay: 0.4s;
+}
+[data-cascade] > [data-reveal]:nth-child(7) {
+  transition-delay: 0.48s;
+}
+
+/* ---- Keyframes (verbatim from prototype) ---- */
+@keyframes petalFall {
+  0% { transform: translateY(0) translateX(0) rotate(0); opacity: 0; }
+  8% { opacity: 0.95; }
+  88% { opacity: 0.85; }
+  100% { transform: translateY(118vh) translateX(var(--dx, 40px)) rotate(700deg); opacity: 0; }
+}
+@keyframes floatArrow {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(13px); opacity: 1; }
+}
+@keyframes bobSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+@keyframes scanMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 220px; }
+}
+@keyframes flick {
+  0%, 100% { opacity: 1; }
+  46% { opacity: 0.82; }
+  50% { opacity: 0.35; }
+  54% { opacity: 0.9; }
+}
+@keyframes slice {
+  0% { clip-path: inset(0 0 92% 0); }
+  20% { clip-path: inset(38% 0 42% 0); }
+  40% { clip-path: inset(78% 0 6% 0); }
+  60% { clip-path: inset(18% 0 62% 0); }
+  80% { clip-path: inset(55% 0 30% 0); }
+  100% { clip-path: inset(0 0 92% 0); }
+}
+@keyframes noiseShift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-9%, -13%); }
+}
+@keyframes gridDrift {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 64px 64px, 64px 64px; }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+@keyframes titleGlitch {
+  0%, 100% { text-shadow: 2px 0 #ff2e97, -2px 0 #00ffd0; }
+  48% { text-shadow: 2px 0 #ff2e97, -2px 0 #00ffd0; }
+  49% { text-shadow: -6px 0 #ff2e97, 6px 0 #00ffd0; }
+  50% { text-shadow: 5px 0 #00ffd0, -5px 0 #ff2e97; }
+  51% { text-shadow: 2px 0 #ff2e97, -2px 0 #00ffd0; }
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(46px, -32px) scale(1.14); }
+}
+@keyframes blobFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-52px, 30px) scale(1.16); }
+}
+@keyframes ringSpin {
+  to { transform: rotate(360deg); }
+}
+@keyframes shimmerSweep {
+  0% { transform: translateX(-130%) skewX(-18deg); }
+  55%, 100% { transform: translateX(360%) skewX(-18deg); }
+}
+@keyframes riseUp {
+  0% { transform: translateY(0); opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 0.7; }
+  100% { transform: translateY(-116vh); opacity: 0; }
+}
+@keyframes coverIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes coverOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes bloomPulse {
+  0% { transform: scale(0.2); opacity: 0; }
+  30% { opacity: 0.95; }
+  100% { transform: scale(2.7); opacity: 0; }
+}
+
+/* ---- Responsive (verbatim attribute overrides) ---- */
+@media (max-width: 780px) {
+  [data-hero-name] { font-size: 46px !important; }
+  [data-landingband] { display: none !important; }
+  [data-stack] { flex-direction: column !important; }
+  [data-door] { min-height: 340px !important; }
+  [data-pad] { padding-left: 22px !important; padding-right: 22px !important; }
+  [data-bighead] { font-size: clamp(40px, 12vw, 60px) !important; }
+}
+
+/* ---- Accessibility: honor OS reduced-motion (belt-and-braces;
+   the React layer also gates particles/decode/count-up/timers) ---- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,121 @@
+/* Full-screen transition cover. Outer animation (coverIn/coverOut, per-world
+   duration) is applied inline since it depends on phase + world. */
+.cover {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  pointer-events: none;
+  overflow: hidden;
+}
+.coverPro {
+  background: #04060a;
+}
+.coverLanding {
+  background: #08090c;
+}
+
+/* ---- Professional (grid glitch) ---- */
+.proScan {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 208, 0.07) 0 2px,
+    transparent 2px 4px
+  );
+}
+.proNoise {
+  position: absolute;
+  inset: -20%;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/></svg>");
+  opacity: 0.5;
+  mix-blend-mode: screen;
+  animation: noiseShift 0.18s steps(2) infinite;
+}
+.proSlice {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 28%;
+  height: 40%;
+  background: linear-gradient(
+    90deg,
+    #ff2e97,
+    transparent 45%,
+    transparent 55%,
+    #00ffd0
+  );
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  animation: slice 0.45s steps(3) infinite;
+}
+.proLabel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #00ffd0;
+  font-family: var(--font-display);
+  letter-spacing: 0.42em;
+  font-size: 15px;
+  text-shadow: var(--rgb-split);
+  animation: blink 0.16s steps(2) infinite;
+}
+
+/* ---- Human (light bloom) ---- */
+.humanGrad {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 42%,
+    #fff8f1,
+    #ffe0b8 26%,
+    #ffc3c9 50%,
+    #ff9e7d 70%,
+    #c98ba8 100%
+  );
+}
+.humanBloomWrap {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.humanBloom {
+  width: 46vmax;
+  height: 46vmax;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 216, 155, 0) 70%
+  );
+  animation: bloomPulse 1.5s ease-out forwards;
+}
+.petalLayer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* ---- Landing (dual-tone wash) ---- */
+.landingWash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 28% 32%,
+      rgba(255, 158, 125, 0.45),
+      transparent 46%
+    ),
+    radial-gradient(circle at 72% 68%, rgba(0, 255, 208, 0.4), transparent 46%);
+}
+.landingLabel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #cfd8de;
+  font-family: var(--font-display);
+  letter-spacing: 0.4em;
+  font-size: 13px;
+}
