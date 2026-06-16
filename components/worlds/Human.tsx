@@ -2,6 +2,7 @@
 import { useRef } from "react";
 import Petals from "@/components/ambient/Petals";
 import HobbyCard from "@/components/human/HobbyCard";
+import LinkedInIcon from "@/components/icons/LinkedInIcon";
 import { useReveal } from "@/hooks/useReveal";
 import { CONTACT, hobbies } from "@/data/portfolio";
 import styles from "./Human.module.css";
@@ -238,6 +239,7 @@ export default function Human({
               rel="noopener noreferrer"
               className={`${styles.btn} ${styles.btnGhost}`}
             >
+              <LinkedInIcon />
               LinkedIn
             </a>
             <a

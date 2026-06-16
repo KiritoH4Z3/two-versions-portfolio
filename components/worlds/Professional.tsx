@@ -3,6 +3,7 @@ import { useRef } from "react";
 import CyberDust from "@/components/ambient/CyberDust";
 import StatCell from "@/components/professional/StatCell";
 import ProjectCard from "@/components/professional/ProjectCard";
+import LinkedInIcon from "@/components/icons/LinkedInIcon";
 import { useReveal } from "@/hooks/useReveal";
 import { useDecode } from "@/hooks/useDecode";
 import { CONTACT, experience, projects, skills, stats } from "@/data/portfolio";
@@ -206,6 +207,7 @@ export default function Professional({
               rel="noopener noreferrer"
               className={`${styles.btn} ${styles.btnGhost}`}
             >
+              <LinkedInIcon />
               LinkedIn
             </a>
             <a
