@@ -238,7 +238,7 @@ export default function Human({
               rel="noopener noreferrer"
               className={`${styles.btn} ${styles.btnGhost}`}
             >
-              in LinkedIn
+              LinkedIn
             </a>
             <a
               href={CONTACT.github}

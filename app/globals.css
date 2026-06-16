@@ -104,13 +104,12 @@ body {
   color: #04110d;
 }
 
-/* ---- Custom scrollbar: thin, accent-tinted, floats off the edge ---- */
-/* Firefox */
-* {
+/* ---- Custom scrollbar: thin, themed per world, floats off the edge ---- */
+/* base (landing — dark, cyan). Firefox via scrollbar-color, WebKit below. */
+html {
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 255, 208, 0.45) transparent;
 }
-/* WebKit / Chromium */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -119,8 +118,7 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  /* the transparent border + padding-box clip makes the visible thumb ~6px,
-     so it reads as a small floating bar rather than filling the gutter */
+  /* transparent border + padding-box clip => ~6px visible thumb (small floating bar) */
   background: rgba(0, 255, 208, 0.35);
   border: 2px solid transparent;
   background-clip: padding-box;
@@ -132,6 +130,34 @@ body {
 }
 ::-webkit-scrollbar-corner {
   background: transparent;
+}
+
+/* The Professional / grid — cyber cyan, a touch brighter */
+html[data-world="professional"] {
+  scrollbar-color: rgba(0, 255, 208, 0.6) transparent;
+}
+html[data-world="professional"]::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 208, 0.5);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+html[data-world="professional"]::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 208, 0.85);
+  background-clip: padding-box;
+}
+
+/* The Human / garden — soft blossom rose, light and organic */
+html[data-world="human"] {
+  scrollbar-color: rgba(201, 139, 168, 0.65) transparent;
+}
+html[data-world="human"]::-webkit-scrollbar-thumb {
+  background: rgba(201, 139, 168, 0.55);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+html[data-world="human"]::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 139, 168, 0.85);
+  background-clip: padding-box;
 }
 
 /* ---- Reveal system (global) ---- */

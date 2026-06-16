@@ -38,16 +38,25 @@ const manrope = Manrope({
   display: "swap",
 });
 
+const SITE_DESCRIPTION =
+  "Computer Science (AI) graduate and solutions-focused AI builder in Dubai, turning ideas into shipped systems.";
+
 export const metadata: Metadata = {
-  title: "Abdullah Hazeq — Two Versions",
-  description:
-    "Abdullah Hazeq — AI builder, problem solver and people person. One person, two doors: the professional (the grid) and the human (the garden).",
-  metadataBase: new URL("https://example.com"),
+  title: "Abdullah Mohammed Hazeq - Portfolio",
+  description: SITE_DESCRIPTION,
+  metadataBase: new URL(
+    "https://two-versions-portfolio-kirito-h4-z3-s-projects.vercel.app"
+  ),
   openGraph: {
-    title: "Abdullah Hazeq — Two Versions",
-    description:
-      "One person, two doors. The professional (the grid) and the human (the garden).",
+    title: "Abdullah Mohammed Hazeq - Portfolio",
+    description: SITE_DESCRIPTION,
     type: "website",
+    url: "/",
+  },
+  twitter: {
+    card: "summary",
+    title: "Abdullah Mohammed Hazeq - Portfolio",
+    description: SITE_DESCRIPTION,
   },
 };
 

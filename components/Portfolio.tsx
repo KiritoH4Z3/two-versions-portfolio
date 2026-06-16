@@ -95,6 +95,11 @@ export default function Portfolio({
     []
   );
 
+  // Reflect the active world on <html> so the browser scrollbar can be themed per world.
+  useEffect(() => {
+    document.documentElement.setAttribute("data-world", mode);
+  }, [mode]);
+
   const enterHuman = useCallback(() => transitionTo("human"), [transitionTo]);
   const enterPro = useCallback(
     () => transitionTo("professional"),
