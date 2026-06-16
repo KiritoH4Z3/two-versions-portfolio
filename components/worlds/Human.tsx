@@ -202,10 +202,7 @@ export default function Human({
           <p className={styles.hobbiesLede}>
             Everything I love involves pushing my limits, working with a team or
             seeing the world differently. That&apos;s not a coincidence, it&apos;s
-            who I am.{" "}
-            <span className={styles.emCormorantPurple}>
-              (Swap any frame for your own photo.)
-            </span>
+            who I am.
           </p>
         </div>
         <div data-cascade className={styles.hobbiesGrid}>
