@@ -67,7 +67,7 @@ export const marquee: string[] = [
 ];
 
 export const stats: Stat[] = [
-  { n: 20, suf: "+", l: "AI agents deployed" },
+  { n: 20, suf: "+", l: "AI characters improved" },
   { n: 1, suf: "", l: "Published paper" },
   { n: 80, suf: "%", l: "Capstone accuracy" },
   { n: 2.5, suf: " yrs", l: "Leading 100+ people" },
@@ -122,10 +122,10 @@ export const experience: Experience[] = [
       "Shipped 3 client AI-automation solutions to sign-off and cut reporting time 60% with Python + LLM pipelines pulling from 50+ sources.",
   },
   {
-    role: "AI / LLM Engineer · Ambassador",
+    role: "AI Ambassador",
     org: "Virtuals Protocol · Kuala Lumpur",
     detail:
-      "Engineered 20+ production agents and acted as the bridge between the technical team and 100+ non-technical stakeholders.",
+      "Built real-time data pipelines feeding live context into AI characters which are often used in c.ai and acted as the bridge between the platform and 100+ community members learning to build AI.",
   },
   {
     role: "IT Intern",
