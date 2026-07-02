@@ -92,8 +92,9 @@
   transform: translateY(26vh) scale(1.08);
 }
 .world[data-sky="dusk"] .sun {
-  transform: translateY(68vh) scale(1.25);
-  opacity: 0.85;
+  /* no hills down here anymore — melt into the bottom edge instead */
+  transform: translateY(78vh) scale(1.3);
+  opacity: 0.55;
 }
 .world[data-sky="night"] .sun {
   transform: translateY(100vh) scale(1.2);
@@ -122,11 +123,12 @@
   transform: translateY(0);
 }
 
-/* A horizon the whole walk shares — and the thing the dusk sun sets behind. */
+/* Hills frame the hero's golden hour only — they fade away once the walk
+   starts, so the lower sections keep a clean sky. */
 .hill {
   position: absolute;
   border-radius: 100% 100% 0 0;
-  transition: filter 1.8s ease;
+  transition: opacity 1.8s ease;
 }
 .hillFar {
   bottom: -7vh;
@@ -142,11 +144,10 @@
   height: 21vh;
   background: linear-gradient(180deg, rgba(128, 90, 130, 0.55), rgba(80, 64, 118, 0.75));
 }
-.world[data-sky="dusk"] .hill {
-  filter: brightness(0.78);
-}
+.world[data-sky="rose"] .hill,
+.world[data-sky="dusk"] .hill,
 .world[data-sky="night"] .hill {
-  filter: brightness(0.5) saturate(0.85);
+  opacity: 0;
 }
 
 .nightLayer {
