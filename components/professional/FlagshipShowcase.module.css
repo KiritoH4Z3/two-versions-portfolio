@@ -47,8 +47,9 @@
   font-weight: 300;
   font-size: clamp(17px, 2.2vw, 21px);
   line-height: 1.55;
-  color: #bcccd2;
+  color: #d3dfe4;
   margin: 0;
+  text-shadow: 0 1px 12px rgba(8, 9, 12, 0.9);
 }
 
 .grid {
@@ -100,17 +101,25 @@
 .steps {
   display: flex;
   flex-direction: column;
-  gap: 34px;
+  gap: 22px;
 }
+/* Glass readout card: the grid texture, dust and scanlines never sit
+   directly behind the narrative text. */
 .step {
-  border-left: 1px solid rgba(0, 255, 208, 0.2);
-  padding-left: 22px;
+  position: relative;
+  background: linear-gradient(160deg, rgba(13, 21, 28, 0.88), rgba(8, 13, 18, 0.82));
+  border: 1px solid rgba(0, 255, 208, 0.14);
+  border-left: 2px solid rgba(0, 255, 208, 0.45);
+  border-radius: 16px;
+  padding: 24px 26px;
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
 }
 .stepLabel {
   font-family: var(--font-mono);
   letter-spacing: 0.22em;
   font-size: 11px;
-  color: #ff2e97;
+  color: #ff5cae;
   margin-bottom: 10px;
 }
 .stepTitle {
@@ -118,14 +127,14 @@
   font-size: clamp(21px, 2.6vw, 28px);
   line-height: 1.15;
   margin: 0 0 10px;
-  color: #eaf6f6;
+  color: #f2fafa;
 }
 .stepBody {
   font-family: var(--font-body);
   font-weight: 300;
   font-size: clamp(14.5px, 1.8vw, 16.5px);
   line-height: 1.7;
-  color: #9fb2b8;
+  color: #b9c9cf;
   margin: 0;
   max-width: 620px;
 }

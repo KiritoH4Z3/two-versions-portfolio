@@ -5,7 +5,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 
 export type HoverWorld = "human" | "pro" | null;
 
-const COUNT = 3000;
+const COUNT = 1400;
 
 /**
  * The landing signature: one field of ~3k particles split by identity.
@@ -67,15 +67,20 @@ const VERTEX = /* glsl */ `
     rot *= 1.0 - 0.85 * uSwirl;
     basePos.xy = mix(basePos.xy, center + rot, uSwirl);
 
-    // Fade near the field edges so the frame never shows a hard cut.
+    // Fade near the field edges so the frame never shows a hard cut,
+    // and clear an elliptical calm zone around the centered hero content
+    // (portrait, name, tagline) — atmosphere, not confetti over the text.
+    float clearZone = smoothstep(0.3, 0.72,
+      length(vec2(basePos.x * 1.15, basePos.y * 0.72)));
     vAlpha = smoothstep(1.2, 0.85, abs(basePos.x)) *
              smoothstep(1.2, 0.9, abs(basePos.y)) *
+             clearZone *
              (0.45 + 0.55 * fract(aSeed * 13.7));
     vSeed = aSeed;
 
     vec4 mv = modelViewMatrix * vec4(basePos, 1.0);
     gl_Position = projectionMatrix * mv;
-    float size = mix(1.6 + aSeed * 2.2, 1.0 + aSeed * 1.4, isCool);
+    float size = mix(1.4 + aSeed * 1.8, 0.9 + aSeed * 1.2, isCool);
     gl_PointSize = size * uPx * (26.0 / -mv.z);
   }
 `;
@@ -93,7 +98,7 @@ const FRAGMENT = /* glsl */ `
     float disc = smoothstep(0.5, 0.12, d);
     vec3 warm = mix(uWarmA, uWarmB, fract(vSeed * 7.31));
     vec3 color = mix(warm, uCool, vMix);
-    gl_FragColor = vec4(color, disc * vAlpha * 0.8);
+    gl_FragColor = vec4(color, disc * vAlpha * 0.55);
   }
 `;
 

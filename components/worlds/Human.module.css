@@ -1,16 +1,132 @@
 .world {
   font-family: var(--font-body);
   color: #4a3b52;
-  background: var(--grad-garden-bg);
+  background: var(--grad-garden-bg); /* fallback under the fixed sky layers */
   position: relative;
   overflow: hidden;
 }
+
+/* ---- The day cycle ----
+   Four fixed skies crossfade as [data-sky] moves golden → rose → dusk →
+   night (set by useSkyPhase from whichever section you're reading).
+   The sun sinks through the phases; the moon and NightLights take over. */
+.sky {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.skyLayer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.8s ease;
+}
+.skyGolden {
+  background: linear-gradient(180deg, #ffe9d2 0%, #ffd9c9 22%, #ffc6c6 48%, #ffb7c5 72%, #e8a9be 100%);
+}
+.skyRose {
+  background: linear-gradient(180deg, #ffd9c9 0%, #ffb7c5 28%, #e3a2bd 58%, #b48cb2 100%);
+}
+.skyDusk {
+  background: linear-gradient(180deg, #e0a9bd 0%, #b78fb4 34%, #8a76a5 64%, #6b5b95 100%);
+}
+.skyNight {
+  background: linear-gradient(180deg, #6b5b95 0%, #4a4174 38%, #332c58 72%, #241f41 100%);
+}
+.world:not([data-sky]) .skyGolden,
+.world[data-sky="golden"] .skyGolden {
+  opacity: 1;
+}
+.world[data-sky="rose"] .skyRose {
+  opacity: 1;
+}
+.world[data-sky="dusk"] .skyDusk {
+  opacity: 1;
+}
+.world[data-sky="night"] .skyNight {
+  opacity: 1;
+}
+
+.sun {
+  position: absolute;
+  top: 6vh;
+  right: 10vw;
+  width: 34vmin;
+  height: 34vmin;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #fff3d6 0%,
+    #ffd89b 32%,
+    rgba(255, 158, 125, 0.6) 58%,
+    transparent 72%
+  );
+  transition: transform 2.2s ease, opacity 2.2s ease;
+}
+.world[data-sky="rose"] .sun {
+  transform: translateY(26vh) scale(1.08);
+}
+.world[data-sky="dusk"] .sun {
+  transform: translateY(68vh) scale(1.25);
+  opacity: 0.85;
+}
+.world[data-sky="night"] .sun {
+  transform: translateY(100vh) scale(1.2);
+  opacity: 0;
+}
+
+.moon {
+  position: absolute;
+  top: 12vh;
+  left: 14vw;
+  width: 9vmin;
+  height: 9vmin;
+  border-radius: 50%;
+  /* crescent: an offset inner shadow is the lit sliver */
+  box-shadow: inset -2.2vmin 1vmin 0 0 #fff3dd, 0 0 4vmin rgba(255, 243, 221, 0.35);
+  opacity: 0;
+  transform: translateY(9vh);
+  transition: transform 2.2s ease, opacity 2.2s ease;
+}
+.world[data-sky="dusk"] .moon {
+  opacity: 0.4;
+  transform: translateY(4vh);
+}
+.world[data-sky="night"] .moon {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nightLayer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+.world[data-sky="dusk"] .nightLayer {
+  opacity: 0.45;
+}
+.world[data-sky="night"] .nightLayer {
+  opacity: 1;
+}
+
 .petalLayer {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 3;
   overflow: hidden;
+  transition: opacity 2s ease;
+}
+.world[data-sky="dusk"] .petalLayer {
+  opacity: 0.55;
+}
+.world[data-sky="night"] .petalLayer {
+  opacity: 0.22;
 }
 
 /* shared section frame */
@@ -349,6 +465,13 @@
   text-align: center;
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
+  transition: background 1.8s ease, border-color 1.8s ease, box-shadow 1.8s ease;
+}
+/* at night the card glows like a lantern at the end of the walk */
+.world[data-sky="night"] .contactCard {
+  background: rgba(36, 28, 62, 0.55);
+  border-color: rgba(255, 216, 155, 0.28);
+  box-shadow: 0 30px 90px -40px rgba(255, 216, 155, 0.35);
 }
 .contactEyebrow {
   font-family: var(--font-display);

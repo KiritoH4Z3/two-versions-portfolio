@@ -1,9 +1,11 @@
 "use client";
 import { useRef } from "react";
 import Petals from "@/components/ambient/Petals";
+import NightLights from "@/components/ambient/NightLights";
 import HobbyCard from "@/components/human/HobbyCard";
 import LinkedInIcon from "@/components/icons/LinkedInIcon";
 import { useReveal } from "@/hooks/useReveal";
+import { useSkyPhase } from "@/hooks/useSkyPhase";
 import { CONTACT, hobbies } from "@/data/portfolio";
 import styles from "./Human.module.css";
 
@@ -20,15 +22,29 @@ export default function Human({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   useReveal(ref, reduceMotion);
+  useSkyPhase(ref);
 
   return (
     <div ref={ref} className={styles.world}>
+      {/* The walk is real: the sky sets as you scroll — golden hour at the
+          hero, dusk by the arc, night by the time we say hello. */}
+      <div className={styles.sky} aria-hidden="true">
+        <div className={`${styles.skyLayer} ${styles.skyGolden}`} />
+        <div className={`${styles.skyLayer} ${styles.skyRose}`} />
+        <div className={`${styles.skyLayer} ${styles.skyDusk}`} />
+        <div className={`${styles.skyLayer} ${styles.skyNight}`} />
+        <div className={styles.sun} />
+        <div className={styles.moon} />
+      </div>
+      <div className={styles.nightLayer}>
+        <NightLights reduceMotion={reduceMotion} />
+      </div>
       <div className={styles.petalLayer}>
         <Petals density={petalDensity} reduceMotion={reduceMotion} />
       </div>
 
       {/* Hero */}
-      <section className={styles.hero}>
+      <section data-sky-phase="golden" className={styles.hero}>
         <div className={styles.heroPhoto} />
         <div className={styles.heroEyebrow}>
           A sunset walk, if you have a minute
@@ -60,7 +76,11 @@ export default function Human({
       </section>
 
       {/* Who I am */}
-      <section data-pad className={`${styles.section} ${styles.whoPad}`}>
+      <section
+        data-pad
+        data-sky-phase="golden"
+        className={`${styles.section} ${styles.whoPad}`}
+      >
         <div data-reveal="0" className={styles.whoGrid}>
           <div>
             <div className={styles.eyebrow}>The person</div>
@@ -88,7 +108,11 @@ export default function Human({
       </section>
 
       {/* A life across borders */}
-      <section data-pad className={`${styles.section} ${styles.bordersPad}`}>
+      <section
+        data-pad
+        data-sky-phase="rose"
+        className={`${styles.section} ${styles.bordersPad}`}
+      >
         <div data-reveal="0" className={styles.bordersIntro}>
           <div className={styles.eyebrow}>A life across borders</div>
           <h2 className={styles.bordersTitle}>
@@ -160,7 +184,11 @@ export default function Human({
       </section>
 
       {/* The arc */}
-      <section data-pad className={`${styles.section} ${styles.arcPad}`}>
+      <section
+        data-pad
+        data-sky-phase="dusk"
+        className={`${styles.section} ${styles.arcPad}`}
+      >
         <div data-reveal="0" className={styles.arcHeader}>
           <div className={styles.eyebrow}>The arc</div>
           <h2 className={styles.arcTitle}>
@@ -196,7 +224,11 @@ export default function Human({
       </section>
 
       {/* Beyond the screen */}
-      <section data-pad className={`${styles.section} ${styles.sectionWide} ${styles.hobbiesPad}`}>
+      <section
+        data-pad
+        data-sky-phase="dusk"
+        className={`${styles.section} ${styles.sectionWide} ${styles.hobbiesPad}`}
+      >
         <div data-reveal="0" className={styles.hobbiesIntro}>
           <div className={styles.eyebrow}>Beyond the screen</div>
           <h2 className={styles.arcTitle}>What I love when the laptop closes</h2>
@@ -216,9 +248,15 @@ export default function Human({
       </section>
 
       {/* Contact */}
-      <section data-pad className={`${styles.section} ${styles.contactPad}`}>
+      <section
+        data-pad
+        data-sky-phase="night"
+        className={`${styles.section} ${styles.contactPad}`}
+      >
         <div data-reveal="0" className={styles.contactCard}>
-          <div className={styles.contactEyebrow}>Say hello</div>
+          <div className={styles.contactEyebrow}>
+            The sun&apos;s down — say hello
+          </div>
           <h2 className={styles.contactTitle}>
             I&apos;d genuinely love to grab a coffee.
           </h2>

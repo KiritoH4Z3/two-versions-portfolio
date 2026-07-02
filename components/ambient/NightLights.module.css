@@ -1,0 +1,60 @@
+/* Stars + fireflies for the garden's dusk/night phases. Keyframes are
+   co-located here (css-loader scopes animation-names per module). The
+   wrapper's opacity is controlled by Human.module.css via [data-sky]. */
+
+.layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff6e8;
+  box-shadow: 0 0 6px rgba(255, 246, 232, 0.9);
+  animation-name: twinkle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.fly {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffe9a8;
+  box-shadow: 0 0 10px 3px rgba(255, 216, 155, 0.65);
+  animation-name: wander;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.layer[data-rm="1"] .star,
+.layer[data-rm="1"] .fly {
+  animation: none;
+  opacity: 0.7;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes wander {
+  0%, 100% { transform: translate(0, 0); opacity: 0.2; }
+  20% { opacity: 1; }
+  35% { transform: translate(34px, -26px); opacity: 0.55; }
+  55% { transform: translate(-18px, -44px); opacity: 1; }
+  70% { opacity: 0.3; }
+  85% { transform: translate(24px, -12px); opacity: 0.9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star,
+  .fly {
+    animation: none;
+    opacity: 0.7;
+  }
+}
