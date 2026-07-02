@@ -197,23 +197,26 @@
   margin-top: -14px;
   transform: translateY(calc((var(--p, 0.5) - 0.5) * 18px));
 }
+/* Solid dark chips: they overlap the white paper below and the dark grid
+   above, so translucency is illegible — these must carry their own ground. */
 .chip {
   font-family: var(--font-mono);
   font-size: 9.5px;
+  font-weight: 600;
   letter-spacing: 0.1em;
   padding: 7px 12px;
   border-radius: 999px;
-  backdrop-filter: blur(4px);
+  box-shadow: 0 8px 22px -10px rgba(0, 0, 0, 0.85);
 }
 .chipAi {
-  color: #ffb7dc;
-  border: 1px solid rgba(255, 46, 151, 0.5);
-  background: rgba(255, 46, 151, 0.12);
+  color: #ffcfe7;
+  border: 1px solid rgba(255, 92, 174, 0.75);
+  background: linear-gradient(160deg, #33101f, #240b16);
 }
 .chipEngine {
-  color: #9ffff0;
-  border: 1px solid rgba(0, 255, 208, 0.5);
-  background: rgba(0, 255, 208, 0.1);
+  color: #b5fff2;
+  border: 1px solid rgba(0, 255, 208, 0.75);
+  background: linear-gradient(160deg, #0b2d25, #07201a);
   animation: chipGlow 2.6s ease-in-out infinite;
 }
 

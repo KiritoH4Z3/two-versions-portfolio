@@ -71,7 +71,7 @@ export default function Landing({
       <section data-cascade className={styles.hero}>
         <div data-reveal="0" className={styles.eyebrow}>
           <span className={styles.eyebrowDot} />
-          Dubai, UAE · Tech &amp; Business Solutions · founder in progress
+          United Arab Emirates · Tech &amp; Business Solutions · founder in progress
         </div>
 
         <div data-reveal="0" className={styles.portraitReveal}>
@@ -84,7 +84,7 @@ export default function Landing({
         </h1>
 
         <div data-reveal="0" className={styles.subline}>
-          COMPUTER SCIENCE (AI) · DUBAI, UAE
+          COMPUTER SCIENCE (AI) · UNITED ARAB EMIRATES
         </div>
 
         <p data-reveal="0" className={styles.tagline}>

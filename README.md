@@ -80,4 +80,4 @@ or run `vercel` / `vercel --prod` from the project root.
 
 ## Contact
 
-Email `ahazeq.mena@gmail.com` · WhatsApp `+971 507 826 347` · Dubai, UAE
+Email `ahazeq.mena@gmail.com` · WhatsApp `+971 507 826 347` · United Arab Emirates

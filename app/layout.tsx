@@ -39,7 +39,7 @@ const manrope = Manrope({
 });
 
 const SITE_DESCRIPTION =
-  "Founder & freelancer in Dubai building AI products — QuickQuote, Wajib, and Tech & Business Solutions for startups.";
+  "Founder & freelancer in the UAE building AI products — QuickQuote, Wajib, and Tech & Business Solutions for startups.";
 
 export const metadata: Metadata = {
   title: "Abdullah Mohammed Hazeq - Portfolio",

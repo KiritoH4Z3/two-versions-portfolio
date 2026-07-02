@@ -65,6 +65,29 @@
   );
   transition: transform 2.2s ease, opacity 2.2s ease;
 }
+/* flare: slow-turning rays + a breathing bloom — the photo's job, done live */
+.sun::before {
+  content: "";
+  position: absolute;
+  inset: -44%;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(255, 226, 170, 0.16) 0deg 7deg,
+    transparent 7deg 22deg
+  );
+  -webkit-mask-image: radial-gradient(circle, #000 22%, transparent 66%);
+  mask-image: radial-gradient(circle, #000 22%, transparent 66%);
+  animation: sunRays 90s linear infinite;
+}
+.sun::after {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 246, 214, 0.55), transparent 62%);
+  animation: sunBloom 5.5s ease-in-out infinite;
+}
 .world[data-sky="rose"] .sun {
   transform: translateY(26vh) scale(1.08);
 }
@@ -97,6 +120,33 @@
 .world[data-sky="night"] .moon {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* A horizon the whole walk shares — and the thing the dusk sun sets behind. */
+.hill {
+  position: absolute;
+  border-radius: 100% 100% 0 0;
+  transition: filter 1.8s ease;
+}
+.hillFar {
+  bottom: -7vh;
+  left: -22%;
+  width: 82%;
+  height: 24vh;
+  background: linear-gradient(180deg, rgba(160, 112, 145, 0.4), rgba(107, 91, 149, 0.6));
+}
+.hillNear {
+  bottom: -9vh;
+  right: -26%;
+  width: 92%;
+  height: 21vh;
+  background: linear-gradient(180deg, rgba(128, 90, 130, 0.55), rgba(80, 64, 118, 0.75));
+}
+.world[data-sky="dusk"] .hill {
+  filter: brightness(0.78);
+}
+.world[data-sky="night"] .hill {
+  filter: brightness(0.5) saturate(0.85);
 }
 
 .nightLayer {
@@ -169,21 +219,6 @@
   padding: 110px 7vw 70px;
   position: relative;
   z-index: 4;
-}
-.heroPhoto {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 62%;
-  background-image: url("/assets/garden-sunset.jpg");
-  background-size: cover;
-  background-position: center;
-  opacity: 0.5;
-  z-index: -1;
-  -webkit-mask-image: linear-gradient(180deg, transparent, #000 55%);
-  mask-image: linear-gradient(180deg, transparent, #000 55%);
-  pointer-events: none;
 }
 .heroEyebrow {
   font-family: var(--font-display);
@@ -560,4 +595,18 @@
 @keyframes floatArrow {
   0%, 100% { transform: translateY(0); opacity: 0.5; }
   50% { transform: translateY(13px); opacity: 1; }
+}
+@keyframes sunRays {
+  to { transform: rotate(360deg); }
+}
+@keyframes sunBloom {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sun::before,
+  .sun::after {
+    animation: none;
+  }
 }

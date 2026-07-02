@@ -19,7 +19,7 @@ export default function QuickQuoteMock({ img }: { img?: string }) {
         <div className={styles.scrapHeader}>WhatsApp · 09:12</div>
         <div className={styles.scrapBody}>
           &ldquo;boss need price for 40 chairs, 8 tables the foldable one, n
-          delivery to JLT asap&rdquo;
+          delivery asap&rdquo;
         </div>
       </div>
 
@@ -49,7 +49,7 @@ export default function QuickQuoteMock({ img }: { img?: string }) {
             <span className={styles.rowAmt}>3,440.00</span>
           </div>
           <div className={styles.row}>
-            <span className={styles.rowName}>Delivery — JLT, Dubai</span>
+            <span className={styles.rowName}>Delivery — customer site</span>
             <span className={styles.rowQty}>×1</span>
             <span className={styles.rowAmt}>350.00</span>
           </div>

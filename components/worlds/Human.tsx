@@ -35,6 +35,9 @@ export default function Human({
         <div className={`${styles.skyLayer} ${styles.skyNight}`} />
         <div className={styles.sun} />
         <div className={styles.moon} />
+        {/* hills after the sun so it sets behind them */}
+        <div className={`${styles.hill} ${styles.hillFar}`} />
+        <div className={`${styles.hill} ${styles.hillNear}`} />
       </div>
       <div className={styles.nightLayer}>
         <NightLights reduceMotion={reduceMotion} />
@@ -45,7 +48,6 @@ export default function Human({
 
       {/* Hero */}
       <section data-sky-phase="golden" className={styles.hero}>
-        <div className={styles.heroPhoto} />
         <div className={styles.heroEyebrow}>
           A sunset walk, if you have a minute
         </div>

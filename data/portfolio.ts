@@ -72,7 +72,7 @@ export const CONTACT = {
   github: "https://github.com/KiritoH4Z3",
   whatsapp: "https://wa.me/971507826347",
   resume: "/assets/Abdullah-Hazeq-Resume.pdf",
-  footer: "ahazeq.mena@gmail.com · +971 507 826 347 (WhatsApp) · Dubai, UAE",
+  footer: "ahazeq.mena@gmail.com · +971 507 826 347 (WhatsApp) · United Arab Emirates",
 } as const;
 
 export const skills: string[] = [
@@ -233,7 +233,7 @@ export const SERVICES_HEADER = {
   label: "// TECH_AND_BUSINESS_SOLUTIONS",
   title: "I also build for you.",
   para1:
-    "By day I ship my own products. In between, I run a freelance practice — Tech & Business Solutions — for startups and small teams who need real software without the agency invoice. You bring the problem; I scope it honestly, build it properly, and adjust to your budget. Yes, an engineer who asks about your budget first. In Dubai. I know.",
+    "By day I ship my own products. In between, I run a freelance practice — Tech & Business Solutions — for startups and small teams who need real software without the agency invoice. You bring the problem; I scope it honestly, build it properly, and adjust to your budget. Yes, an engineer who asks about your budget first. In the UAE. I know.",
   para2:
     "It's becoming a registered company very soon, so this is your window to say you knew me before the paperwork. Until then it's just me — which means the person you talk to is the person who builds it.",
   ctaEmail: "Email me the problem",
