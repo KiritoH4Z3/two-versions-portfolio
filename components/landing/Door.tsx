@@ -1,19 +1,32 @@
 "use client";
 import styles from "./Door.module.css";
 
-/** The two chooser cards on the landing screen. */
+/** The two chooser cards on the landing screen. Hover visuals stay pure CSS;
+ * onHoverChange only feeds the 3D particle field's color/flow bias. */
 export default function Door({
   variant,
   onClick,
+  onHoverChange,
 }: {
   variant: "human" | "pro";
   onClick: () => void;
+  onHoverChange?: (on: boolean) => void;
 }) {
+  const hoverProps = onHoverChange
+    ? {
+        onMouseEnter: () => onHoverChange(true),
+        onMouseLeave: () => onHoverChange(false),
+        onFocus: () => onHoverChange(true),
+        onBlur: () => onHoverChange(false),
+      }
+    : {};
+
   if (variant === "human") {
     return (
       <div
         data-door
         onClick={onClick}
+        {...hoverProps}
         className={`${styles.door} ${styles.human}`}
       >
         <div className={styles.ribbon}>← if you want to know the person</div>
@@ -37,7 +50,12 @@ export default function Door({
   }
 
   return (
-    <div data-door onClick={onClick} className={`${styles.door} ${styles.pro}`}>
+    <div
+      data-door
+      onClick={onClick}
+      {...hoverProps}
+      className={`${styles.door} ${styles.pro}`}
+    >
       <div className={styles.proScan} />
       <div className={styles.shimmerPro} />
       <div className={styles.tagPro}>RECRUITERS START HERE →</div>

@@ -39,7 +39,7 @@ const manrope = Manrope({
 });
 
 const SITE_DESCRIPTION =
-  "Computer Science (AI) graduate and solutions-focused AI builder in Dubai, turning ideas into shipped systems.";
+  "Founder & freelancer in Dubai building AI products — QuickQuote, Wajib, and Tech & Business Solutions for startups.";
 
 export const metadata: Metadata = {
   title: "Abdullah Mohammed Hazeq - Portfolio",

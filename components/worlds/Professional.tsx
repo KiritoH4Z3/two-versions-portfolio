@@ -1,16 +1,37 @@
 "use client";
 import { useRef } from "react";
+import dynamic from "next/dynamic";
 import CyberDust from "@/components/ambient/CyberDust";
 import StatCell from "@/components/professional/StatCell";
 import ProjectCard from "@/components/professional/ProjectCard";
+import FlagshipShowcase from "@/components/professional/FlagshipShowcase";
+import Services from "@/components/professional/Services";
 import LinkedInIcon from "@/components/icons/LinkedInIcon";
+import { webglAvailable } from "@/components/three/webgl";
 import { useReveal } from "@/hooks/useReveal";
 import { useDecode } from "@/hooks/useDecode";
-import { CONTACT, experience, projects, skills, stats } from "@/data/portfolio";
+import { useMounted } from "@/hooks/useMounted";
+import { useScrollProgress } from "@/hooks/useScrollProgress";
+import {
+  CONTACT,
+  FLAGSHIPS_HEADER,
+  experience,
+  flagships,
+  projects,
+  skills,
+  stats,
+} from "@/data/portfolio";
 import styles from "./Professional.module.css";
 
+// Shares the lazy three/fiber chunk with the landing scene; never in the
+// main bundle, never fetched without WebGL or with reduced motion.
+const ProTerrainScene = dynamic(
+  () => import("@/components/three/ProTerrainScene"),
+  { ssr: false }
+);
+
 const DECODE_FINAL =
-  "Computer Science (AI) graduate · turning ideas into shipped systems.";
+  "Building AI products · running Tech & Business Solutions · shipping for startups.";
 
 export default function Professional({
   reduceMotion,
@@ -23,6 +44,11 @@ export default function Professional({
   useReveal(ref, reduceMotion);
   const decodeRef = useDecode(DECODE_FINAL, reduceMotion);
 
+  const mounted = useMounted();
+  const heroRef = useRef<HTMLElement>(null);
+  const heroProgress = useScrollProgress(heroRef, { reduceMotion });
+  const show3d = mounted && !reduceMotion && webglAvailable();
+
   return (
     <div ref={ref} className={styles.world}>
       <div className={styles.scanlines} />
@@ -34,8 +60,14 @@ export default function Professional({
       </div>
 
       {/* Hero */}
-      <section className={styles.hero}>
+      <section ref={heroRef} className={styles.hero}>
         <div className={styles.heroPhoto} />
+        {show3d && (
+          <ProTerrainScene
+            className={styles.heroScene}
+            progress={heroProgress}
+          />
+        )}
         <div className={styles.statusRow}>
           <span className={styles.statusDot} />
           <span className={styles.statusText}>
@@ -131,19 +163,44 @@ export default function Professional({
         </div>
       </section>
 
-      {/* Featured projects */}
+      {/* Flagship systems */}
+      <section
+        id="flagships"
+        data-pad
+        className={`${styles.section} ${styles.wrap1240} ${styles.projPad}`}
+      >
+        <div data-reveal="0" className={styles.projHeader}>
+          <div className={styles.projLabel}>{FLAGSHIPS_HEADER.label}</div>
+          <h2 className={styles.h2Bright}>{FLAGSHIPS_HEADER.title}</h2>
+          <p className={styles.flagSub}>{FLAGSHIPS_HEADER.sub}</p>
+        </div>
+        {flagships.map((f) => (
+          <FlagshipShowcase key={f.id} flagship={f} reduceMotion={reduceMotion} />
+        ))}
+      </section>
+
+      {/* More builds */}
       <section data-pad className={`${styles.section} ${styles.wrap1240} ${styles.projPad}`}>
         <div data-reveal="0" className={styles.projHeader}>
-          <div className={styles.projLabel}>// FEATURED_PROJECTS</div>
-          <h2 className={styles.h2Bright}>Things I&apos;ve built &amp; shipped</h2>
+          <div className={styles.projLabel}>// MORE_BUILDS</div>
+          <h2 className={styles.h2Bright}>More things I&apos;ve shipped</h2>
         </div>
-        <div data-cascade className={styles.projGrid}>
+        <div data-cascade className={styles.projGridCompact}>
           {projects.map((p) => (
             <div key={p.num} data-reveal="0" className={styles.gridItem}>
-              <ProjectCard project={p} />
+              <ProjectCard project={p} compact />
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Tech & Business Solutions */}
+      <section
+        id="services"
+        data-pad
+        className={`${styles.section} ${styles.wrap1240} ${styles.thrivePad}`}
+      >
+        <Services />
       </section>
 
       {/* Experience log */}
@@ -176,8 +233,9 @@ export default function Professional({
           <div className={styles.contactLabel}>// OPEN_TO_CONNECT</div>
           <h2 className={styles.contactH2}>Let&apos;s build something.</h2>
           <p className={styles.contactPara}>
-            AI implementation, solutions, presales and automation. If
-            there&apos;s a real problem to solve, I want in.
+            I build AI products, and I build them for clients. If there&apos;s
+            a real problem with a real budget — even a small one — I want to
+            hear it.
           </p>
           <div className={styles.contactButtons}>
             <a

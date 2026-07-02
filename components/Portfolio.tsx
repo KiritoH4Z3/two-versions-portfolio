@@ -44,9 +44,11 @@ export default function Portfolio({
 
   const coverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const revealTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pendingAnchor = useRef<string | null>(null);
 
-  const transitionTo = useCallback((target: World) => {
+  const transitionTo = useCallback((target: World, opts?: { anchor?: string }) => {
     if (fxRef.current || target === modeRef.current) return;
+    pendingAnchor.current = opts?.anchor ?? null;
     const r = reduceRef.current;
     const coverDur = r
       ? 130
@@ -75,8 +77,21 @@ export default function Portfolio({
       modeRef.current = target;
       setFx({ world: target, phase: "out" });
       fxRef.current = { world: target, phase: "out" };
+      const anchor = pendingAnchor.current;
+      pendingAnchor.current = null;
       try {
-        window.scrollTo(0, 0);
+        if (anchor) {
+          // Let the new world commit first; the still-opaque cover hides the jump.
+          requestAnimationFrame(() =>
+            requestAnimationFrame(() =>
+              document
+                .getElementById(anchor)
+                ?.scrollIntoView({ behavior: "auto" })
+            )
+          );
+        } else {
+          window.scrollTo(0, 0);
+        }
       } catch {
         /* no-op */
       }
@@ -103,6 +118,10 @@ export default function Portfolio({
   const enterHuman = useCallback(() => transitionTo("human"), [transitionTo]);
   const enterPro = useCallback(
     () => transitionTo("professional"),
+    [transitionTo]
+  );
+  const enterFlagships = useCallback(
+    () => transitionTo("professional", { anchor: "flagships" }),
     [transitionTo]
   );
   const toggle = useCallback(
@@ -137,6 +156,7 @@ export default function Portfolio({
           reduceMotion={reduce}
           onEnterHuman={enterHuman}
           onEnterPro={enterPro}
+          onEnterFlagships={enterFlagships}
         />
       )}
       {mode === "human" && (

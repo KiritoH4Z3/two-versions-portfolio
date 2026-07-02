@@ -1,14 +1,20 @@
 import type { Project } from "@/data/portfolio";
 import styles from "./ProjectCard.module.css";
 
-/** One featured-project card — links out in a new tab. */
-export default function ProjectCard({ project }: { project: Project }) {
+/** One project card — links out in a new tab. `compact` for the demoted grid. */
+export default function ProjectCard({
+  project,
+  compact = false,
+}: {
+  project: Project;
+  compact?: boolean;
+}) {
   return (
     <a
       href={project.link}
       target="_blank"
       rel="noopener noreferrer"
-      className={styles.card}
+      className={compact ? `${styles.card} ${styles.compact}` : styles.card}
     >
       <div className={styles.topBar} />
       <div className={styles.num}>0{project.num} /</div>

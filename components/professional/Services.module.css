@@ -1,0 +1,120 @@
+/* Tech & Business Solutions panel — thrive-panel vocabulary with a warm
+   amber→magenta seam to mark the "work with me" moment. */
+
+.panel {
+  position: relative;
+  border: 1px solid rgba(255, 216, 155, 0.25);
+  border-radius: 20px;
+  padding: clamp(34px, 5vw, 60px);
+  background: linear-gradient(150deg, #14161f, #0a1016);
+  overflow: hidden;
+}
+.seam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ffd89b, #ff2e97, transparent);
+}
+.glow {
+  position: absolute;
+  top: -40%;
+  left: -8%;
+  width: 42vw;
+  height: 42vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 216, 155, 0.09), transparent 60%);
+  filter: blur(24px);
+  pointer-events: none;
+}
+.label {
+  font-family: var(--font-mono);
+  letter-spacing: 0.22em;
+  font-size: 11px;
+  color: #ffd89b;
+  margin-bottom: 18px;
+  position: relative;
+}
+.h2 {
+  font-weight: 700;
+  font-size: clamp(30px, 5vw, 58px);
+  line-height: 1.03;
+  margin: 0 0 22px;
+  color: #eaf6f6;
+  position: relative;
+}
+.para {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.7;
+  color: #bcccd2;
+  max-width: 780px;
+  margin: 0 0 16px;
+  position: relative;
+}
+.paraLast {
+  margin: 0 0 38px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  position: relative;
+  margin-bottom: 36px;
+}
+.card {
+  background: rgba(255, 216, 155, 0.04);
+  border: 1px solid rgba(255, 216, 155, 0.18);
+  border-radius: 14px;
+  padding: 22px;
+}
+.cardTitle {
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0 0 8px;
+  color: #eaf6f6;
+}
+.cardBody {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #9fb2b8;
+  margin: 0;
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  position: relative;
+}
+.btn {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+}
+.btnPrimary {
+  background: linear-gradient(120deg, #ffd89b, #ff9e7d);
+  color: #2b1608;
+  transition: box-shadow 0.25s;
+}
+.btnPrimary:hover {
+  box-shadow: 0 0 26px rgba(255, 216, 155, 0.55);
+}
+.btnGhost {
+  border: 1px solid rgba(255, 216, 155, 0.4);
+  color: #ffe9cf;
+  transition: border-color 0.25s;
+}
+.btnGhost:hover {
+  border-color: #ffd89b;
+}

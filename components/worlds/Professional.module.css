@@ -6,7 +6,9 @@
     linear-gradient(90deg, rgba(0, 255, 208, 0.045) 1px, transparent 1px);
   background-size: 64px 64px;
   position: relative;
-  overflow: hidden;
+  /* clip, not hidden: hidden makes this a scroll container and silently
+     kills position:sticky in the flagship showcases */
+  overflow: clip;
   animation: gridDrift 24s linear infinite;
 }
 
@@ -110,11 +112,25 @@
   background-image: url("/assets/grid-circuit.jpg");
   background-size: cover;
   background-position: center;
-  opacity: 0.12;
+  /* quieter now that the wire terrain layers on top of it */
+  opacity: 0.07;
   z-index: -1;
   -webkit-mask-image: radial-gradient(120% 90% at 72% 42%, #000, transparent 74%);
   mask-image: radial-gradient(120% 90% at 72% 42%, #000, transparent 74%);
   pointer-events: none;
+}
+.heroScene {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(130% 100% at 50% 46%, #000, transparent 78%);
+  mask-image: radial-gradient(130% 100% at 50% 46%, #000, transparent 78%);
+}
+.heroScene canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
 }
 .statusRow {
   display: flex;
@@ -313,8 +329,22 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 18px;
 }
+.projGridCompact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
 .gridItem {
   display: grid;
+}
+.flagSub {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(15px, 2vw, 18px);
+  line-height: 1.6;
+  color: #9fb2b8;
+  margin: 12px 0 0;
+  max-width: 640px;
 }
 
 /* ---- Experience log ---- */
