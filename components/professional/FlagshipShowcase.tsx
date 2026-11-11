@@ -5,6 +5,7 @@ import StatCell from "@/components/professional/StatCell";
 import QuickQuoteMock from "@/components/professional/mocks/QuickQuoteMock";
 import WajibMock from "@/components/professional/mocks/WajibMock";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
+import { usePointerTilt } from "@/hooks/usePointerTilt";
 import styles from "./FlagshipShowcase.module.css";
 
 /**
@@ -23,6 +24,9 @@ export default function FlagshipShowcase({
 }) {
   const rootRef = useRef<HTMLElement>(null);
   useScrollProgress(rootRef, { reduceMotion, setVar: true });
+  // The product panel leans toward the pointer, like something you could pick up.
+  const panelRef = useRef<HTMLDivElement>(null);
+  usePointerTilt(panelRef, { reduceMotion });
 
   return (
     <article ref={rootRef} className={styles.showcase}>
@@ -40,7 +44,7 @@ export default function FlagshipShowcase({
       <div className={styles.grid}>
         <div className={styles.visualCol}>
           <div data-reveal="0" className={styles.stickyBox}>
-            <div className={styles.visualPanel}>
+            <div ref={panelRef} className={styles.visualPanel}>
               <div className={styles.visualBar} />
               {flagship.mock === "quote" ? (
                 <QuickQuoteMock img={flagship.mockImg} />

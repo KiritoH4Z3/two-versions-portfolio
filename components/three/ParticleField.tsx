@@ -10,12 +10,12 @@ const COUNT = 1400;
 /**
  * The landing signature: one field of ~3k particles split by identity.
  * Left/warm points fall and sway like the garden's petals; right/cyan
- * points rise in grid-snapped columns like the grid's dust — interweaving
+ * points rise in grid-snapped columns like the grid's dust: interweaving
  * at the center divider the landing already draws.
  *
  * Hovering a Door biases color and drift toward that world (uBias);
  * choosing a door vortexes the field into the incoming cover transition
- * (uSwirl) — fire-and-forget, since Landing unmounts at cover peak.
+ * (uSwirl): fire-and-forget, since Landing unmounts at cover peak.
  *
  * All per-frame motion lives in the shader + uniform lerps; React re-renders
  * only on the rare hover/click prop changes.
@@ -37,7 +37,7 @@ const VERTEX = /* glsl */ `
     float t = uTime;
     float isCool = step(0.0, aSide);
 
-    // Warm half: petal physics — slow fall with sway, wrapping vertically.
+    // Warm half: petal physics: slow fall with sway, wrapping vertically.
     vec3 warmP = p;
     warmP.y = 1.15 - 2.3 * fract(aSeed + t * 0.028);
     warmP.x += sin(t * (0.35 + aSeed * 0.5) + aSeed * 6.283) * 0.07;
@@ -69,7 +69,7 @@ const VERTEX = /* glsl */ `
 
     // Fade near the field edges so the frame never shows a hard cut,
     // and clear an elliptical calm zone around the centered hero content
-    // (portrait, name, tagline) — atmosphere, not confetti over the text.
+    // (portrait, name, tagline): atmosphere, not confetti over the text.
     float clearZone = smoothstep(0.3, 0.72,
       length(vec2(basePos.x * 1.15, basePos.y * 0.72)));
     vAlpha = smoothstep(1.2, 0.85, abs(basePos.x)) *

@@ -5,16 +5,20 @@ import CyberDust from "@/components/ambient/CyberDust";
 import StatCell from "@/components/professional/StatCell";
 import ProjectCard from "@/components/professional/ProjectCard";
 import FlagshipShowcase from "@/components/professional/FlagshipShowcase";
-import Services from "@/components/professional/Services";
+import ZeqlarSection from "@/components/professional/ZeqlarSection";
 import LinkedInIcon from "@/components/icons/LinkedInIcon";
 import { webglAvailable } from "@/components/three/webgl";
 import { useReveal } from "@/hooks/useReveal";
 import { useDecode } from "@/hooks/useDecode";
 import { useMounted } from "@/hooks/useMounted";
+import { useIdleReady } from "@/hooks/useIdleReady";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import {
   CONTACT,
+  CONTACT_PANEL,
   FLAGSHIPS_HEADER,
+  PRO_HERO,
+  ZEQLAR,
   experience,
   flagships,
   projects,
@@ -30,8 +34,7 @@ const ProTerrainScene = dynamic(
   { ssr: false }
 );
 
-const DECODE_FINAL =
-  "Building AI products · running Tech & Business Solutions · shipping for startups.";
+const DECODE_FINAL = PRO_HERO.decode;
 
 export default function Professional({
   reduceMotion,
@@ -47,7 +50,8 @@ export default function Professional({
   const mounted = useMounted();
   const heroRef = useRef<HTMLElement>(null);
   const heroProgress = useScrollProgress(heroRef, { reduceMotion });
-  const show3d = mounted && !reduceMotion && webglAvailable();
+  const idle = useIdleReady();
+  const show3d = mounted && idle && !reduceMotion && webglAvailable();
 
   return (
     <div ref={ref} className={styles.world}>
@@ -71,13 +75,13 @@ export default function Professional({
         <div className={styles.statusRow}>
           <span className={styles.statusDot} />
           <span className={styles.statusText}>
-            // SYSTEM ONLINE · IDENTITY: A.HAZEQ
+            {PRO_HERO.status}
           </span>
         </div>
         <h1 className={styles.title}>
-          AI BUILDER
+          {PRO_HERO.titleTop}
           <br />
-          <span className={styles.titleAccent}>&amp; SOLVER.</span>
+          <span className={styles.titleAccent}>{PRO_HERO.titleAccent}</span>
         </h1>
         <p className={styles.decodeLine}>
           <span className={styles.decodePrompt}>&gt;</span>{" "}
@@ -86,6 +90,23 @@ export default function Professional({
           </span>
           <span className={styles.cursor}>_</span>
         </p>
+        <div className={styles.heroCtas}>
+          <a
+            href={ZEQLAR.contactUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${styles.btn} ${styles.btnResume}`}
+          >
+            {ZEQLAR.ctaProject} <span aria-hidden="true">→</span>
+          </a>
+          <a
+            href={CONTACT.resume}
+            download
+            className={`${styles.btn} ${styles.btnGhost}`}
+          >
+            <span aria-hidden="true">⤓</span> {PRO_HERO.ctaResume}
+          </a>
+        </div>
         <div className={styles.skills}>
           {skills.map((s) => (
             <span key={s} className={styles.skillChip}>
@@ -100,6 +121,46 @@ export default function Professional({
         <div data-reveal="0" className={styles.statsGrid}>
           {stats.map((st) => (
             <StatCell key={st.l} stat={st} reduceMotion={reduceMotion} />
+          ))}
+        </div>
+      </section>
+
+      {/* The company */}
+      <section
+        id="zeqlar"
+        data-pad
+        className={`${styles.section} ${styles.wrap1240} ${styles.thrivePad}`}
+      >
+        <ZeqlarSection reduceMotion={reduceMotion} />
+      </section>
+
+      {/* Flagship systems */}
+      <section
+        id="flagships"
+        data-pad
+        className={`${styles.section} ${styles.wrap1240} ${styles.projPad}`}
+      >
+        <div data-reveal="0" className={styles.projHeader}>
+          <div className={styles.projLabel}>{FLAGSHIPS_HEADER.label}</div>
+          <h2 className={styles.h2Bright}>{FLAGSHIPS_HEADER.title}</h2>
+          <p className={styles.flagSub}>{FLAGSHIPS_HEADER.sub}</p>
+        </div>
+        {flagships.map((f) => (
+          <FlagshipShowcase key={f.id} flagship={f} reduceMotion={reduceMotion} />
+        ))}
+      </section>
+
+      {/* More builds */}
+      <section data-pad className={`${styles.section} ${styles.wrap1240} ${styles.projPad}`}>
+        <div data-reveal="0" className={styles.projHeader}>
+          <div className={styles.projLabel}>// MORE_BUILDS</div>
+          <h2 className={styles.h2Bright}>More things I&apos;ve shipped</h2>
+        </div>
+        <div data-cascade className={styles.projGridCompact}>
+          {projects.map((p) => (
+            <div key={p.num} data-reveal="0" className={styles.gridItem}>
+              <ProjectCard project={p} compact />
+            </div>
           ))}
         </div>
       </section>
@@ -163,46 +224,6 @@ export default function Professional({
         </div>
       </section>
 
-      {/* Flagship systems */}
-      <section
-        id="flagships"
-        data-pad
-        className={`${styles.section} ${styles.wrap1240} ${styles.projPad}`}
-      >
-        <div data-reveal="0" className={styles.projHeader}>
-          <div className={styles.projLabel}>{FLAGSHIPS_HEADER.label}</div>
-          <h2 className={styles.h2Bright}>{FLAGSHIPS_HEADER.title}</h2>
-          <p className={styles.flagSub}>{FLAGSHIPS_HEADER.sub}</p>
-        </div>
-        {flagships.map((f) => (
-          <FlagshipShowcase key={f.id} flagship={f} reduceMotion={reduceMotion} />
-        ))}
-      </section>
-
-      {/* More builds */}
-      <section data-pad className={`${styles.section} ${styles.wrap1240} ${styles.projPad}`}>
-        <div data-reveal="0" className={styles.projHeader}>
-          <div className={styles.projLabel}>// MORE_BUILDS</div>
-          <h2 className={styles.h2Bright}>More things I&apos;ve shipped</h2>
-        </div>
-        <div data-cascade className={styles.projGridCompact}>
-          {projects.map((p) => (
-            <div key={p.num} data-reveal="0" className={styles.gridItem}>
-              <ProjectCard project={p} compact />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Tech & Business Solutions */}
-      <section
-        id="services"
-        data-pad
-        className={`${styles.section} ${styles.wrap1240} ${styles.thrivePad}`}
-      >
-        <Services />
-      </section>
-
       {/* Experience log */}
       <section data-pad className={`${styles.section} ${styles.wrap1000} ${styles.expPad}`}>
         <div data-reveal="0" className={styles.expLabel}>
@@ -230,20 +251,18 @@ export default function Professional({
       <section data-pad className={`${styles.section} ${styles.wrap1000} ${styles.contactPad}`}>
         <div data-reveal="0" className={styles.contactPanel}>
           <div className={styles.contactScan} />
-          <div className={styles.contactLabel}>// OPEN_TO_CONNECT</div>
-          <h2 className={styles.contactH2}>Let&apos;s build something.</h2>
-          <p className={styles.contactPara}>
-            I build AI products, and I build them for clients. If there&apos;s
-            a real problem with a real budget — even a small one — I want to
-            hear it.
-          </p>
+          <div className={styles.contactLabel}>{CONTACT_PANEL.label}</div>
+          <h2 className={styles.contactH2}>{CONTACT_PANEL.title}</h2>
+          <p className={styles.contactPara}>{CONTACT_PANEL.para}</p>
+          <h3 className={styles.contactGroup}>{CONTACT_PANEL.projectLabel}</h3>
           <div className={styles.contactButtons}>
             <a
-              href={CONTACT.resume}
-              download
+              href={ZEQLAR.contactUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className={`${styles.btn} ${styles.btnResume}`}
             >
-              ⤓ Download résumé
+              {ZEQLAR.ctaProject} <span aria-hidden="true">→</span>
             </a>
             <a
               href={`mailto:${CONTACT.email}`}
@@ -258,6 +277,16 @@ export default function Professional({
               className={`${styles.btn} ${styles.btnGhost}`}
             >
               ✆ WhatsApp
+            </a>
+          </div>
+          <h3 className={styles.contactGroup}>{CONTACT_PANEL.roleLabel}</h3>
+          <div className={styles.contactButtons}>
+            <a
+              href={CONTACT.resume}
+              download
+              className={`${styles.btn} ${styles.btnGhost}`}
+            >
+              <span aria-hidden="true">⤓</span> {PRO_HERO.ctaResume}
             </a>
             <a
               href={CONTACT.linkedin}

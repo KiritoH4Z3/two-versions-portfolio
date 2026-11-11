@@ -7,7 +7,15 @@ import { useEffect, useRef, type RefObject } from "react";
  * (rootMargin bottom -12%, matching the reveal threshold). Decimal places match
  * the prototype: 1 for non-integer targets (e.g. 2.5 → "2.5 yrs"), else 0.
  * Writes textContent via the ref. Under reduced motion it snaps to the target.
+ *
+ * The cell renders its final value on the server (see formatStat), so the
+ * number is right with JavaScript off; the count starts from zero only once
+ * the cell is about to be seen.
  */
+export function formatStat(target: number, suffix: string): string {
+  return target.toFixed(Number.isInteger(target) ? 0 : 1) + suffix;
+}
+
 export function useCountUp(
   target: number,
   suffix: string,
@@ -21,6 +29,8 @@ export function useCountUp(
 
     const dec = Number.isInteger(target) ? 0 : 1;
     const fmt = (v: number) => v.toFixed(dec) + suffix;
+    // Reserve the final width so the count never shifts its neighbours.
+    el.style.minWidth = el.offsetWidth + "px";
 
     if (reduceMotion) {
       el.textContent = fmt(target);

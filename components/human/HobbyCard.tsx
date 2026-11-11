@@ -5,13 +5,19 @@ import styles from "./HobbyCard.module.css";
 export default function HobbyCard({ hobby }: { hobby: Hobby }) {
   return (
     <div className={styles.card}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        className={styles.img}
-        src={hobby.img}
-        alt={hobby.name}
-        loading="lazy"
-      />
+      <picture>
+        <source type="image/webp" srcSet={hobby.img.replace(/\.jpg$/, ".webp")} />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className={styles.img}
+          src={hobby.img}
+          alt={hobby.name}
+          width={760}
+          height={444}
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
       <div className={styles.body}>
         <div className={styles.tag}>{hobby.tag}</div>
         <h3 className={styles.name}>{hobby.name}</h3>

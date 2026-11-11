@@ -257,7 +257,7 @@ export default function Human({
       >
         <div data-reveal="0" className={styles.contactCard}>
           <div className={styles.contactEyebrow}>
-            The sun&apos;s down — say hello
+            The sun&apos;s down. Say hello
           </div>
           <h2 className={styles.contactTitle}>
             I&apos;d genuinely love to grab a coffee.

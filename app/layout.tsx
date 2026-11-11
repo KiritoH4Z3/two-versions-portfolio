@@ -5,6 +5,7 @@ import {
   JetBrains_Mono,
   Manrope,
 } from "next/font/google";
+import { CONTACT, SITE, ZEQLAR } from "@/data/portfolio";
 import "./globals.css";
 
 // Garden display & quotes — non-variable, needs explicit weights + italics.
@@ -38,26 +39,59 @@ const manrope = Manrope({
   display: "swap",
 });
 
-const SITE_DESCRIPTION =
-  "Founder & freelancer in the UAE building AI products — QuickQuote, Wajib, and Tech & Business Solutions for startups.";
-
 export const metadata: Metadata = {
-  title: "Abdullah Mohammed Hazeq - Portfolio",
-  description: SITE_DESCRIPTION,
-  metadataBase: new URL(
-    "https://two-versions-portfolio-kirito-h4-z3-s-projects.vercel.app"
-  ),
+  title: SITE.title,
+  description: SITE.description,
+  metadataBase: new URL(SITE.url),
   openGraph: {
-    title: "Abdullah Mohammed Hazeq - Portfolio",
-    description: SITE_DESCRIPTION,
+    title: SITE.title,
+    description: SITE.description,
     type: "website",
     url: "/",
+    siteName: SITE.name,
   },
   twitter: {
     card: "summary",
-    title: "Abdullah Mohammed Hazeq - Portfolio",
-    description: SITE_DESCRIPTION,
+    title: SITE.title,
+    description: SITE.description,
   },
+};
+
+/**
+ * Who this is, for search engines and assistants: a person, the company he
+ * founded, and the profiles that are his. Composed from the same content
+ * module the page renders, so the two cannot disagree.
+ */
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": SITE.url + "/#person",
+      name: SITE.name,
+      url: SITE.url + SITE.routes.professional,
+      jobTitle: "Founder",
+      description: SITE.description,
+      address: { "@type": "PostalAddress", addressCountry: "AE" },
+      worksFor: { "@id": ZEQLAR.url + "/#organization" },
+      sameAs: [CONTACT.linkedin, CONTACT.github],
+    },
+    {
+      "@type": "Organization",
+      "@id": ZEQLAR.url + "/#organization",
+      name: ZEQLAR.wordmark,
+      legalName: ZEQLAR.legalName,
+      url: ZEQLAR.url,
+      founder: { "@id": SITE.url + "/#person" },
+    },
+    {
+      "@type": "WebSite",
+      "@id": SITE.url + "/#website",
+      url: SITE.url,
+      name: SITE.title,
+      author: { "@id": SITE.url + "/#person" },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -70,7 +104,17 @@ export default function RootLayout({
       lang="en"
       className={`${cormorant.variable} ${chakra.variable} ${jbmono.variable} ${manrope.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        {/* Static JSON built from our own constants above, no user input:
+            the one place raw HTML is set, and "<" is escaped regardless. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(JSON_LD).replace(/</g, "\\u003c"),
+          }}
+        />
+      </body>
     </html>
   );
 }

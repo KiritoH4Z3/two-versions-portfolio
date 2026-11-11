@@ -7,6 +7,8 @@ import Marquee from "@/components/ambient/Marquee";
 import { webglAvailable } from "@/components/three/webgl";
 import { useReveal } from "@/hooks/useReveal";
 import { useMounted } from "@/hooks/useMounted";
+import { useIdleReady } from "@/hooks/useIdleReady";
+import { LANDING } from "@/data/portfolio";
 import styles from "./Landing.module.css";
 
 // The whole three/fiber graph stays out of the main chunk; it is only
@@ -53,7 +55,8 @@ export default function Landing({
     onEnterPro();
   }, [onEnterPro]);
 
-  const show3d = mounted && !reduceMotion && webglAvailable();
+  const idle = useIdleReady();
+  const show3d = mounted && idle && !reduceMotion && webglAvailable();
 
   return (
     <div ref={ref} className={styles.world}>
@@ -71,7 +74,7 @@ export default function Landing({
       <section data-cascade className={styles.hero}>
         <div data-reveal="0" className={styles.eyebrow}>
           <span className={styles.eyebrowDot} />
-          United Arab Emirates · Tech &amp; Business Solutions · founder in progress
+          {LANDING.eyebrow}
         </div>
 
         <div data-reveal="0" className={styles.portraitReveal}>
@@ -84,17 +87,17 @@ export default function Landing({
         </h1>
 
         <div data-reveal="0" className={styles.subline}>
-          COMPUTER SCIENCE (AI) · UNITED ARAB EMIRATES
+          {LANDING.subline}
         </div>
 
         <p data-reveal="0" className={styles.tagline}>
-          I build AI products, run my own practice, and I&apos;m still a{" "}
-          <span className={styles.taglineAccent}>people person.</span>
+          {LANDING.taglineLead}{" "}
+          <span className={styles.taglineAccent}>{LANDING.taglineAccent}</span>
         </p>
 
         <div data-reveal="0">
           <button type="button" onClick={onEnterFlagships} className={styles.tease}>
-            FEATURED BUILDS: QUICKQUOTE · WAJIB
+            {LANDING.tease}
             <span className={styles.teaseArrow}>→</span>
           </button>
         </div>
@@ -119,9 +122,7 @@ export default function Landing({
 
       <section data-pad className={styles.introSection}>
         <p data-reveal="0" className={styles.intro}>
-          Computer Science (AI) graduate, back in the Gulf. I ship AI products,
-          run Tech &amp; Business Solutions for startups, and still chase a good
-          racing line.
+          {LANDING.intro}
         </p>
       </section>
 

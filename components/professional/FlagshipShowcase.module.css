@@ -64,7 +64,14 @@
   position: sticky;
   top: 96px;
 }
+.stickyBox {
+  perspective: 1100px;
+}
 .visualPanel {
+  /* --rx / --ry come from hooks/usePointerTilt.ts; zero without it. */
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform;
   position: relative;
   border: 1px solid rgba(0, 255, 208, 0.22);
   border-radius: 20px;

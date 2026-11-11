@@ -1,4 +1,5 @@
 "use client";
+import { LANDING } from "@/data/portfolio";
 import styles from "./Door.module.css";
 
 /** The two chooser cards on the landing screen. Hover visuals stay pure CSS;
@@ -67,9 +68,7 @@ export default function Door({
       </div>
       <div className={styles.bottomProWrap}>
         <p className={styles.descPro}>
-          AI builder &amp; solutions person. Production agents, published
-          research, deepfake detection and deployments at scale. The technical
-          story.
+          {LANDING.doorPro}
         </p>
         <span className={styles.ctaPro}>
           Enter the grid <span className={styles.ctaArrowSm}>▸</span>

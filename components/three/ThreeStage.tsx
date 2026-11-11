@@ -15,9 +15,12 @@ import { Canvas } from "@react-three/fiber";
 export default function ThreeStage({
   className,
   camera,
+  onDead,
   children,
 }: {
   className: string;
+  /** Called if the GL context is lost, so the caller can restore its fallback. */
+  onDead?: () => void;
   camera?: { position: [number, number, number]; fov?: number };
   children: ReactNode;
 }) {
@@ -55,6 +58,7 @@ export default function ThreeStage({
             (e) => {
               e.preventDefault();
               setDead(true);
+              onDead?.();
             },
             { once: true }
           );

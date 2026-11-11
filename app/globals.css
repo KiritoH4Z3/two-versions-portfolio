@@ -26,6 +26,8 @@
   --cyan-dust: #7fe9df;
   --magenta: #ff2e97;
   --amber: #ffd89b;
+  /* ZEQLAR's own accent, a material. Only inside components/professional/Zeqlar*. */
+  --zeqlar-ember: #e8a94e;
   --cyber-text-bright: #eaf6f6;
   --cyber-text: #c9d6e0;
   --cyber-text-muted: #9fb2b8;
@@ -160,17 +162,16 @@ html[data-world="human"]::-webkit-scrollbar-thumb:hover {
   background-clip: padding-box;
 }
 
-/* ---- Reveal system (global) ---- */
-[data-reveal] {
-  transition: opacity 1s var(--ease-reveal), transform 1s var(--ease-reveal);
-}
-[data-reveal="0"] {
+/* ---- Reveal system (global) ----
+   Markup ships visible. hooks/useReveal.ts adds data-armed to the nodes that
+   should animate, and only data-armed hides. With JavaScript off nothing here
+   matches and the whole page reads. tests/reveal-css.test.ts pins that. */
+[data-reveal="0"][data-armed] {
   opacity: 0;
   transform: translateY(34px) scale(0.992);
 }
-[data-reveal="1"] {
-  opacity: 1;
-  transform: none;
+[data-reveal="1"][data-armed] {
+  transition: opacity 1s var(--ease-reveal), transform 1s var(--ease-reveal);
 }
 [data-cascade] > [data-reveal]:nth-child(2) {
   transition-delay: 0.08s;
@@ -304,6 +305,8 @@ html[data-world="human"]::-webkit-scrollbar-thumb:hover {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+    animation-delay: 0s !important;
+    transition-delay: 0s !important;
     scroll-behavior: auto !important;
   }
 }

@@ -1,0 +1,19 @@
+# Extracted 2026-11-11 from zeqlar-website src/content (site.ts, name.ts, about.ts, home.ts, work.ts, services.ts).
+# Refresh: re-run the grep lines in tests/zeqlar-facts.test.ts header against that repo.
+    label: "Zenith",
+    label: "Equilibrium",
+    label: "Scalar",
+  line: "Peak operations. Balanced spend. Room to scale.",
+      "NEXT_PUBLIC_SITE_URL is not set. Set it to the live origin (https://zeqlar.com) " +
+  legalName: "ZEQLAR Solutions FZE - LLC",
+  shortName: "ZEQLAR",
+   * "ZEQLAR"` beside `legalName: "ZEQLAR Solutions FZE - LLC"` with nothing in
+    freeZone: "Ajman NuVentures Centre Free Zone (ANCFZ)",
+    lead: "A B2B technology company licensed in Ajman NuVentures Centre Free Zone. We build software, AI and data systems for companies in the UAE and the wider GCC.",
+    { value: "08", note: "Lines of work, each fully in-house." },
+    lead: "A B2B technology company in the United Arab Emirates. Software, AI and data work for clients across the UAE and the wider GCC.",
+      "When you hire ZEQLAR you get me. I answer, I build, I stand behind it.",
+    { value: "03", note: "Client engagements, across events, sport and industry." },
+    { value: "01", note: "Platform we built for ourselves, and now licence out." },
+    link: { label: "Open QuickQuote", href: "https://quickquote-qq.vercel.app" },
+    value: "02", note: "Still ongoing, and both founded by retired professional cricketers.", }, 

@@ -1,12 +1,20 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { World } from "@/data/portfolio";
+import { SITE, type World } from "@/data/portfolio";
 import { useReduceMotion } from "@/hooks/useReduceMotion";
 import Cover from "./transition/Cover";
 import Controls from "./Controls";
 import Landing from "./worlds/Landing";
 import Human from "./worlds/Human";
 import Professional from "./worlds/Professional";
+
+/** Each world has an address, so a link can open one directly. */
+function worldFromPath(pathname: string): World {
+  const path = pathname.endsWith("/") ? pathname : pathname + "/";
+  if (path === SITE.routes.professional) return "professional";
+  if (path === SITE.routes.human) return "human";
+  return "landing";
+}
 
 interface Fx {
   world: World;
@@ -46,8 +54,9 @@ export default function Portfolio({
   const revealTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pendingAnchor = useRef<string | null>(null);
 
-  const transitionTo = useCallback((target: World, opts?: { anchor?: string }) => {
+  const transitionTo = useCallback((target: World, opts?: { anchor?: string; fromHistory?: boolean }) => {
     if (fxRef.current || target === modeRef.current) return;
+    const fromHistory = opts?.fromHistory ?? false;
     pendingAnchor.current = opts?.anchor ?? null;
     const r = reduceRef.current;
     const coverDur = r
@@ -80,6 +89,16 @@ export default function Portfolio({
       const anchor = pendingAnchor.current;
       pendingAnchor.current = null;
       try {
+        // The door changed the world in place; give it its own address so
+        // back, forward, reload and a copied link all mean what they show.
+        if (!fromHistory && worldFromPath(window.location.pathname) !== target) {
+          window.history.pushState(null, "", SITE.routes[target]);
+        }
+        document.title = SITE.titles[target];
+      } catch {
+        /* no-op */
+      }
+      try {
         if (anchor) {
           // Let the new world commit first; the still-opaque cover hides the jump.
           requestAnimationFrame(() =>
@@ -98,9 +117,27 @@ export default function Portfolio({
       revealTimer.current = setTimeout(() => {
         setFx(null);
         fxRef.current = null;
+        // Back was pressed again mid-transition: catch up with the address.
+        const want = worldFromPath(window.location.pathname);
+        if (want !== modeRef.current) {
+          transitionRef.current?.(want, { fromHistory: true });
+        }
       }, revealDur);
     }, coverDur);
   }, []);
+
+  const transitionRef = useRef<typeof transitionTo>();
+  transitionRef.current = transitionTo;
+
+  // Back and forward walk between worlds through the same cover transition.
+  useEffect(() => {
+    const onPop = () => {
+      const want = worldFromPath(window.location.pathname);
+      if (want !== modeRef.current) transitionTo(want, { fromHistory: true });
+    };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, [transitionTo]);
 
   useEffect(
     () => () => {
@@ -151,6 +188,7 @@ export default function Portfolio({
         <Controls variant="pro" onHome={home} onToggle={toggle} />
       )}
 
+      <main>
       {mode === "landing" && (
         <Landing
           reduceMotion={reduce}
@@ -169,6 +207,7 @@ export default function Portfolio({
       {mode === "professional" && (
         <Professional reduceMotion={reduce} onToggle={toggle} />
       )}
+      </main>
     </>
   );
 }

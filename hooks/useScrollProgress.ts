@@ -22,10 +22,17 @@ import { useEffect, useRef, type MutableRefObject, type RefObject } from "react"
  */
 export function useScrollProgress(
   ref: RefObject<HTMLElement>,
-  opts: { reduceMotion: boolean; setVar?: boolean }
+  opts: {
+    reduceMotion: boolean;
+    setVar?: boolean;
+    /** Called with each new value, from the rAF reader. Keep it cheap. */
+    onChange?: (p: number) => void;
+  }
 ): MutableRefObject<number> {
   const progress = useRef(0.5);
   const { reduceMotion, setVar } = opts;
+  const onChange = useRef(opts.onChange);
+  onChange.current = opts.onChange;
 
   useEffect(() => {
     const el = ref.current;
@@ -57,6 +64,7 @@ export function useScrollProgress(
       );
       progress.current = p;
       if (setVar) el.style.setProperty("--p", p.toFixed(4));
+      onChange.current?.(p);
     };
 
     window.addEventListener("scroll", markDirty, { passive: true });

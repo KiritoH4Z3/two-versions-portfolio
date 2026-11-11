@@ -2,9 +2,9 @@ import styles from "./WajibMock.module.css";
 
 const DEADLINES = [
   { name: "Corporate Tax filing", due: "in 84 days", tier: "far" },
-  { name: "VAT return — Q2", due: "in 26 days", tier: "mid" },
+  { name: "VAT return, Q2", due: "in 26 days", tier: "mid" },
   { name: "Trade licence renewal", due: "in 6 days", tier: "near" },
-  { name: "Visa renewal — 2 staff", due: "tomorrow", tier: "now" },
+  { name: "Visa renewal, 2 staff", due: "tomorrow", tier: "now" },
 ] as const;
 
 /**
@@ -16,7 +16,7 @@ const DEADLINES = [
 export default function WajibMock({ img }: { img?: string }) {
   if (img) {
     // eslint-disable-next-line @next/next/no-img-element
-    return <img src={img} alt="Wajib — compliance dashboard" className={styles.swap} />;
+    return <img src={img} alt="The Wajib compliance dashboard" className={styles.swap} />;
   }
 
   return (
@@ -58,7 +58,7 @@ export default function WajibMock({ img }: { img?: string }) {
       <div className={styles.toast} aria-hidden="true">
         <span className={styles.toastIcon}>✆</span>
         <span>
-          WhatsApp sent: &ldquo;Trade licence expires in 6 days — renew now,
+          WhatsApp sent: &ldquo;Trade licence expires in 6 days. Renew now,
           AED 5,000 fine after.&rdquo;
         </span>
       </div>

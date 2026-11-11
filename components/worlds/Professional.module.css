@@ -110,6 +110,10 @@
   position: absolute;
   inset: 0;
   background-image: url("/assets/grid-circuit.jpg");
+  background-image: image-set(
+    url("/assets/grid-circuit.webp") type("image/webp"),
+    url("/assets/grid-circuit.jpg") type("image/jpeg")
+  );
   background-size: cover;
   background-position: center;
   /* quieter now that the wire terrain layers on top of it */
@@ -177,8 +181,24 @@
   animation: blink 1s steps(1) infinite;
   color: #00ffd0;
 }
+.heroCtas {
+  margin-top: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.contactGroup {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #9fb8b6;
+  margin: 26px 0 12px;
+  position: relative;
+}
 .skills {
-  margin-top: 40px;
+  margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
