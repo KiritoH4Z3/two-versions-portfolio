@@ -105,8 +105,8 @@ devices do better than these on main-thread time.
 
 ## Before the next deploy
 
-- `SITE.url` in `data/portfolio.ts` is the Vercel preview-style domain. If a custom domain is
-  attached, change it there; canonical URLs, the sitemap and JSON-LD all follow.
+- `SITE.url` in `data/portfolio.ts` is `https://ahazeq.vercel.app`, the address the CV gives. If a custom
+  domain is attached later, change it there; canonical URLs, the sitemap and JSON-LD all follow.
 - When zeqlar.com changes a count (engagements, lines of work), refresh
   `tests/fixtures/zeqlar-facts.txt` and let the test point at what went stale.
 - Fonts are fetched from Google at build time. One build in this session failed on that fetch and
@@ -114,4 +114,4 @@ devices do better than these on main-thread time.
 
 ## Contact
 
-Email `ahazeq.mena@gmail.com` or WhatsApp `+971 507 826 347`. United Arab Emirates.
+Email `ahazeq.mena@gmail.com` or WhatsApp `+971 56 400 6697`. United Arab Emirates.

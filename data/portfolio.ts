@@ -70,7 +70,7 @@ export interface ServiceItem {
 
 /** The deployed origin. Canonical URLs, Open Graph and the sitemap build on it. */
 export const SITE = {
-  url: "https://two-versions-portfolio-kirito-h4-z3-s-projects.vercel.app",
+  url: "https://ahazeq.vercel.app",
   name: "Abdullah Mohammed Hazeq",
   title: "Abdullah Mohammed Hazeq, founder of ZEQLAR",
   description:
@@ -99,9 +99,9 @@ export const CONTACT = {
   email: "ahazeq.mena@gmail.com",
   linkedin: "https://linkedin.com/in/abdullahmhazeq",
   github: "https://github.com/KiritoH4Z3",
-  whatsapp: "https://wa.me/971507826347",
+  whatsapp: "https://wa.me/971564006697",
   resume: "/assets/Abdullah-Hazeq-Resume.pdf",
-  footer: "ahazeq.mena@gmail.com · +971 507 826 347 (WhatsApp) · United Arab Emirates",
+  footer: "ahazeq.mena@gmail.com · +971 56 400 6697 (WhatsApp) · United Arab Emirates",
 } as const;
 
 export const skills: string[] = [
@@ -249,11 +249,11 @@ export const flagships: Flagship[] = [
     metrics: [
       { n: 68, suf: "k+", l: "Businesses hit by one missed deadline" },
       { n: 5, suf: "", l: "Alert escalation tiers" },
-      { n: 6, suf: "", l: "Deadline types tracked" },
+      { n: 8, suf: "", l: "Obligations tracked" },
       { n: 2, suf: "", l: "Languages it reads" },
     ],
     stack: ["AI document extraction", "Rules engine", "WhatsApp + email alerts"],
-    link: "https://wa.me/971507826347",
+    link: "https://wa.me/971564006697",
     linkLabel: "Request a demo",
     mock: "dashboard",
   },
