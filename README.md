@@ -105,7 +105,6 @@ devices do better than these on main-thread time.
 
 ## Before the next deploy
 
-- The résumé PDF in `public/assets/` predates ZEQLAR. Replace it with one that says Founder.
 - `SITE.url` in `data/portfolio.ts` is the Vercel preview-style domain. If a custom domain is
   attached, change it there; canonical URLs, the sitemap and JSON-LD all follow.
 - When zeqlar.com changes a count (engagements, lines of work), refresh
