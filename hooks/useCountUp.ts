@@ -12,8 +12,18 @@ import { useEffect, useRef, type RefObject } from "react";
  * number is right with JavaScript off; the count starts from zero only once
  * the cell is about to be seen.
  */
+/** Thousands grouped ("4,000+"), so the server render and every count-up frame agree. */
+export function formatValue(v: number, dec: number, suffix: string): string {
+  return (
+    v.toLocaleString("en-US", {
+      minimumFractionDigits: dec,
+      maximumFractionDigits: dec,
+    }) + suffix
+  );
+}
+
 export function formatStat(target: number, suffix: string): string {
-  return target.toFixed(Number.isInteger(target) ? 0 : 1) + suffix;
+  return formatValue(target, Number.isInteger(target) ? 0 : 1, suffix);
 }
 
 export function useCountUp(
@@ -28,7 +38,7 @@ export function useCountUp(
     if (!el) return;
 
     const dec = Number.isInteger(target) ? 0 : 1;
-    const fmt = (v: number) => v.toFixed(dec) + suffix;
+    const fmt = (v: number) => formatValue(v, dec, suffix);
     // Reserve the final width so the count never shifts its neighbours.
     el.style.minWidth = el.offsetWidth + "px";
 

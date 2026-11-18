@@ -109,6 +109,51 @@ export default function Human({
         </div>
       </section>
 
+      {/* The name, and why I build. Sits in the golden hour, where the sky is
+          lightest, so its ink keeps AA contrast. */}
+      <section
+        data-pad
+        data-sky-phase="golden"
+        className={`${styles.section} ${styles.namePad}`}
+      >
+        <div data-reveal="0" className={styles.nameBlock}>
+          <div className={styles.eyebrow}>The name</div>
+          <h2 className={styles.bordersTitle}>
+            Hazeq{NBSP}
+            <span lang="ar" dir="rtl" className={styles.nameArabic}>
+              حاذق
+            </span>
+            <div>
+              <span className={styles.nameAccent}>
+                Skilled. Adept. Masterful.
+              </span>
+            </div>
+          </h2>
+          <p className={styles.bordersPara}>
+            It&apos;s my family name, and what I ask everyone to call me. In
+            Arabic it means all of those at once, and it&apos;s the standard
+            I&apos;m trying to grow into.
+          </p>
+          <p className={styles.bordersPara}>
+            Right now I&apos;m a jack of all trades. I build, I design, I research
+            and I run a company. I see that as a starting point. Every master of
+            all trades began as a jack of all trades, and I intend to get there
+            one skill at a time.
+          </p>
+          <p className={`${styles.bordersPara} ${styles.bordersParaLast}`}>
+            I want to do my best, earn my best, and use it to look after the
+            people who need it most. That starts with my own clients. When the
+            market is rough or a business is going through a hard time, we work
+            out instalments or start with a smaller first version they can
+            afford.{" "}
+            <span className={styles.nameTail}>
+              Good software shouldn&apos;t only belong to companies with big
+              budgets.
+            </span>
+          </p>
+        </div>
+      </section>
+
       {/* A life across borders */}
       <section
         data-pad
@@ -140,7 +185,7 @@ export default function Human({
           </p>
           <p className={`${styles.bordersPara} ${styles.bordersParaLast}`}>
             Different cultures, different languages, different ways of seeing the
-            world. I do not just cope with that, I come alive in it. Put me in
+            world. That is where I come alive. Put me in
             any room, any city, any team, and I will find my feet and, more
             importantly, I will find the people.{" "}
             <span className={`${styles.emCormorantPurple} ${styles.em112}`}>
@@ -236,8 +281,8 @@ export default function Human({
           <h2 className={styles.arcTitle}>What I love when the laptop closes</h2>
           <p className={styles.hobbiesLede}>
             Everything I love involves pushing my limits, working with a team or
-            seeing the world differently. That&apos;s not a coincidence, it&apos;s
-            who I am.
+            seeing the world differently. The same three things show up in my
+            work.
           </p>
         </div>
         <div data-cascade className={styles.hobbiesGrid}>

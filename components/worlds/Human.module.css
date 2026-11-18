@@ -194,7 +194,8 @@
   font-family: var(--font-display);
   letter-spacing: 0.28em;
   font-size: 11px;
-  color: #9a6a7e;
+  /* was #9a6a7e, 2.7:1 on the golden sky; 5.0:1 now */
+  color: #644451;
   text-transform: uppercase;
   margin-bottom: 12px;
 }
@@ -209,6 +210,35 @@
 }
 .em112 {
   font-size: 1.12em;
+}
+/* Arabic has no true italic, and the serif has no Arabic glyphs, so the name
+   stays upright in the system's Arabic face at the heading's colour family. */
+.nameArabic {
+  font-style: normal;
+  font-family: "Noto Naskh Arabic", "Geeza Pro", "Segoe UI", serif;
+  color: #524672;
+}
+/* The section's purple accents, one step darker than #6b5b95: measured 5.0:1
+   or better on the golden sky behind them, where #6b5b95 read 3.4:1. */
+.nameAccent {
+  font-style: italic;
+  color: #524672;
+}
+.nameTail {
+  font-style: italic;
+  font-family: var(--font-serif);
+  font-size: 1.12em;
+  color: #524672;
+}
+/* "The name": centred, so it does not repeat the left-aligned borders intro
+   that follows it. */
+.namePad {
+  padding: 40px 7vw 60px;
+}
+.nameBlock {
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 /* ---- Hero ---- */

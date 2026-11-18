@@ -74,7 +74,7 @@ export const SITE = {
   name: "Abdullah Mohammed Hazeq",
   title: "Abdullah Mohammed Hazeq, founder of ZEQLAR",
   description:
-    "Founder of ZEQLAR Solutions FZE - LLC in the UAE. I build software and AI systems for companies, and ship my own products: QuickQuote and Wajib.",
+    "Founder of ZEQLAR Solutions FZE - LLC in the UAE and open to new roles in tech. I design and build software and AI systems, and ship my own products: QuickQuote and Wajib.",
   routes: {
     landing: "/",
     professional: "/professional/",
@@ -87,11 +87,11 @@ export const SITE = {
   },
   descriptions: {
     landing:
-      "Founder of ZEQLAR Solutions FZE - LLC in the UAE. I build software and AI systems for companies, and ship my own products: QuickQuote and Wajib.",
+      "Founder of ZEQLAR Solutions FZE - LLC in the UAE and open to new roles in tech. I design and build software and AI systems, and ship my own products: QuickQuote and Wajib.",
     professional:
-      "Founder of ZEQLAR. I build software and AI systems for UAE companies, and I ship my own products. Flagship builds, experience and how to start a project.",
+      "Founder of ZEQLAR and open to new roles. I design and build software and AI systems for UAE companies. Flagship builds, client work, experience and how to reach me.",
     human:
-      "The person behind the work: competitive gaming, sim racing, photography, travel and the people I build with.",
+      "The person behind the work: what my name means, why I build, competitive gaming, sim racing, photography and the people I build with.",
   },
 } as const;
 
@@ -105,14 +105,16 @@ export const CONTACT = {
 } as const;
 
 export const skills: string[] = [
-  "Agentic Workflows",
-  "LLM Integration",
-  "Product Engineering",
-  "Next.js · Supabase",
-  "Solution Scoping",
-  "Python · SQL",
+  "AI Engineering",
+  "Multi-Agent Systems · RAG",
+  "Local AI · Ollama",
+  "React · Next.js · TypeScript",
+  "UI/UX Design",
+  "Python · FastAPI",
+  "Supabase · SQL",
   "Automation (n8n · Make)",
   "Deep Learning",
+  "Client Scoping",
 ];
 
 export const marquee: string[] = [
@@ -133,45 +135,66 @@ export const marquee: string[] = [
   "Solutions",
 ];
 
+// Counted 2026-11-18: test definitions across the 16 repositories with 2026
+// work (4,148), sites live in production (zeqlar.com, eventimesports.ae,
+// msytca.ae, QuickQuote, this portfolio). The rest are the CV's own figures.
 export const stats: Stat[] = [
-  { n: 3, suf: "", l: "ZEQLAR client engagements" },
-  { n: 2, suf: "", l: "Own products built" },
-  { n: 1, suf: "", l: "Published paper" },
-  { n: 2.5, suf: " yrs", l: "Leading 100+ people" },
-  { n: 95, suf: "%", l: "Resolution rate" },
-  { n: 3, suf: "", l: "Languages spoken" },
+  { n: 4000, suf: "+", l: "Automated tests written in 2026" },
+  { n: 5, suf: "", l: "Sites and apps live" },
+  { n: 3, suf: "x", l: "Client throughput from one AI pipeline" },
+  { n: 95, suf: "%", l: "IT incidents fixed on first contact" },
+  { n: 70, suf: "%", l: "Fewer on-site event failures" },
+  { n: 1, suf: "", l: "Peer-reviewed paper" },
 ];
 
 export const projects: Project[] = [
   {
     num: 1,
+    title: "Eventime Sports",
+    desc: "The website for a cricket sourcing and distribution company in Ajman Free Zone. Built to the client's approved design down to the pixel, with every departure from it written down.",
+    tags: ["Client work", "Next.js", "Design fidelity"],
+    metric: "Live · eventimesports.ae",
+    link: "https://eventimesports.ae",
+    linkLabel: "Visit site",
+  },
+  {
+    num: 2,
+    title: "MS Young Talents Cricket Academy",
+    desc: "The website for a youth cricket, swimming and gym academy in Sharjah. Parents can enquire online, and every enquiry lands in a database the academy owns.",
+    tags: ["Client work", "Next.js", "Supabase"],
+    metric: "Live · msytca.ae",
+    link: "https://msytca.ae",
+    linkLabel: "Visit site",
+  },
+  {
+    num: 3,
+    title: "Ask Hana",
+    desc: "A RAG chatbot that answers from a small document set with citations, and declines when the documents are silent. Runs on Claude or a local model.",
+    tags: ["RAG", "ChromaDB", "Ollama"],
+    metric: "38 of 38 golden questions",
+    link: "https://github.com/KiritoH4Z3/ask-hana",
+    linkLabel: "GitHub",
+  },
+  {
+    num: 4,
+    title: "Signal",
+    desc: "An AI market-intelligence parser that turns noisy financial chatter into structured, actionable signal. Open source: bring your own API key.",
+    tags: ["LLM", "Parsing", "Markets"],
+    metric: "171 tests · open source",
+    link: "https://github.com/KiritoH4Z3/signal-ai-parser",
+    linkLabel: "GitHub",
+  },
+  {
+    num: 5,
     title: "Deepfake Detection Framework",
-    desc: "A hybrid EfficientNet + LSTM model that flags synthetic video, with Grad-CAM explainability to show how it decides. Full 8-month research lifecycle, run solo.",
+    desc: "A hybrid EfficientNet + LSTM model that flags synthetic video. Grad-CAM showed me it was reading JPEG artifacts instead of faces, so I fixed the data and validated it again.",
     tags: ["EfficientNet", "LSTM", "Grad-CAM"],
     metric: "80% accuracy · Distinction",
     link: "https://github.com/KiritoH4Z3/Deepfake-Detection-Framework",
     linkLabel: "GitHub",
   },
   {
-    num: 2,
-    title: "AP Nav",
-    desc: "An AI tool that forecasts campus congestion before it happens. Built end to end in a month, then pitched as an ROI business case straight to the University COO, who endorsed it.",
-    tags: ["Random Forest", "scikit-learn", "ROI case"],
-    metric: "Endorsed by the COO",
-    link: "https://github.com/KiritoH4Z3/AP-Nav",
-    linkLabel: "GitHub",
-  },
-  {
-    num: 3,
-    title: "Signal",
-    desc: "An AI market-intelligence parser that turns noisy financial chatter into structured, actionable signal.",
-    tags: ["LLM", "Parsing", "Markets"],
-    metric: "AI market intelligence",
-    link: "https://github.com/KiritoH4Z3/signal-ai-parser",
-    linkLabel: "GitHub",
-  },
-  {
-    num: 4,
+    num: 6,
     title: "Food Recommendation System",
     desc: "Peer-reviewed research as sole first author: a hybrid recommender (TF-IDF + collaborative filtering) that beat every single-method baseline. Published in JATI Journal, Vol. 8 No. 2.",
     tags: ["NLP", "Hybrid Filtering", "Published"],
@@ -183,8 +206,8 @@ export const projects: Project[] = [
 
 export const FLAGSHIPS_HEADER = {
   label: "// FLAGSHIP_SYSTEMS",
-  title: "Two products I'd bet my name on.",
-  sub: "Not coursework. Not demos. Real systems solving expensive problems for real UAE businesses. Built solo, tested hard.",
+  title: "Two products I'm proud of.",
+  sub: "Both solve expensive problems for UAE businesses: quotes that take too long, and government deadlines that are easy to miss. I designed, built and tested each one myself.",
 } as const;
 
 export const flagships: Flagship[] = [
@@ -281,7 +304,7 @@ export const ZEQLAR = {
   para1:
     "ZEQLAR Solutions FZE - LLC is the B2B technology company I founded, licensed in Ajman NuVentures Centre Free Zone. We build software, AI and data systems for companies in the UAE and the wider GCC.",
   para2:
-    "When you hire ZEQLAR you get me. I answer, I build, I stand behind it. You bring the problem. I scope it honestly, build it properly and work to your budget. Yes, an engineer who asks about your budget first. I know.",
+    "When you hire ZEQLAR you get me. I answer, I build, I stand behind it. You bring the problem. I scope it honestly, build it properly and work to your budget. Yes, an engineer who asks about your budget first. I know. And if times are hard, we can spread the cost into instalments.",
   facts: [
     { value: "03", note: "Client engagements" },
     { value: "02", note: "Still ongoing" },
@@ -321,21 +344,21 @@ export const experience: Experience[] = [
   },
   {
     role: "AI Automation Analyst (Freelance)",
-    org: "Self-Employed · Remote",
+    org: "Self-Employed · Remote · GCC clients",
     detail:
-      "Shipped 3 client AI-automation solutions to sign-off and cut reporting time 60% with Python + LLM pipelines pulling from 50+ sources.",
+      "Built a four-stage agentic Python pipeline that tripled a Saudi events client's outreach throughput and sent 1,500+ personalised emails in 30 days, with a local-model fallback when API limits ran out. Then sold it to more GCC clients.",
   },
   {
-    role: "AI Ambassador",
+    role: "AI/LLM Engineer and Ambassador",
     org: "Virtuals Protocol · Kuala Lumpur",
     detail:
-      "Built real-time data pipelines feeding live context into AI characters which are often used in c.ai and acted as the bridge between the platform and 100+ community members learning to build AI.",
+      "Built Python pipelines that fed live news and Wikipedia context to AI characters, shaped their personas, and taught 100+ community members how to build their own.",
   },
   {
     role: "IT Intern",
     org: "Majid Al Futtaim · Riyadh",
     detail:
-      "95% first-contact resolution across 100+ cases; Python and SQL automation cut repeat escalations 30% in month one.",
+      "Resolved 95% of incidents on first contact across 100+ cases for the Saudi region, and wrote the troubleshooting guide that cut repeat escalations by about 30%.",
   },
   {
     role: "Head of Operations",
@@ -406,11 +429,11 @@ export const hobbies: Hobby[] = [
 
 /** Professional hero. The decode line is also the route's first sentence. */
 export const PRO_HERO = {
-  status: "// FOUNDER, ZEQLAR · UNITED ARAB EMIRATES",
+  status: "// FOUNDER, ZEQLAR · OPEN TO NEW ROLES · UNITED ARAB EMIRATES",
   titleTop: "FOUNDER",
   titleAccent: "& AI BUILDER.",
   decode:
-    "Founder of ZEQLAR. I build software and AI systems for UAE companies, and I ship my own products.",
+    "Founder of ZEQLAR and open to new roles. I design and build software and AI systems, and I learn fast.",
   ctaResume: "Download résumé",
 } as const;
 
@@ -421,7 +444,7 @@ export const LANDING = {
   taglineAccent: "people person.",
   tease: "FEATURED BUILDS: QUICKQUOTE · WAJIB",
   intro:
-    "Computer Science (AI) graduate, back in the Gulf. I founded ZEQLAR Solutions, ship AI products for UAE companies, and still chase a good racing line.",
+    "Computer Science (AI) graduate, 21, back in the Gulf. I founded ZEQLAR Solutions, design and build AI products for UAE companies, and I'm looking for a team to grow with.",
   doorPro:
     "Founder of ZEQLAR and AI builder. Two flagship products, client work, published research and deepfake detection. The technical story.",
 } as const;
@@ -429,7 +452,7 @@ export const LANDING = {
 export const CONTACT_PANEL = {
   label: "// OPEN_TO_CONNECT",
   title: "Let's build something.",
-  para: "I build AI products, and I build them for clients. If there's a real problem with a real budget, even a small one, I want to hear it.",
+  para: "Two ways to work with me: bring me onto your team, or bring ZEQLAR a project. I hold my own UAE visa and can start right away. Small budgets are welcome, and if times are tough we can work out instalments.",
   projectLabel: "A project for your company",
   roleLabel: "A role on your team",
 } as const;

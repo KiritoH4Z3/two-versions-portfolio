@@ -128,3 +128,24 @@ count halves, pointer tilt is off (no hover), facts fold to a 2x2 grid. Touch ta
 - 2026-11-11 Hero entrance on first load removed: the hero is painted by the server so the largest
   paint does not wait for JavaScript. World-to-world transitions keep the cascade.
 - 2026-11-11 The prototype's scroll cue and decorative status dot stay. They are the approved design's.
+- 2026-11-18 Open-to-roles pass. Abdullah is job hunting while ZEQLAR runs, and asked for a humble
+  voice. The "Where I thrive" panel said he was not chasing AI or ML seats, which contradicts the CV
+  (Full Stack Developer, AI Engineer); it is now `// OPEN_TO_NEW_ROLES` with the same layout, and its
+  second pillar is Design instead of Coordinate (coordination is the human world's story already).
+  The hero status line names the open roles. Copy that read as bravado ("I'd bet my name on",
+  "Not coursework. Not demos.") was rewritten plainly.
+- 2026-11-18 Stats strip rebuilt from counted figures: 4,000+ tests (4,148 test definitions across the
+  16 repositories with 2026 work), 5 live sites and apps, and the CV's 3x, 95%, 70% and one paper. The
+  ZEQLAR counts left the strip because the ZEQLAR facts grid already shows them. Counters now group
+  thousands on the server render and on every count-up frame (`tests/count-format.test.ts`).
+- 2026-11-18 ZEQLAR facts grid: values sat at the bottom of `column-reverse` cells, so "02" dropped
+  below "03" whenever a note wrapped. `justify-content: flex-end` pins every value to the top.
+- 2026-11-18 More builds grew to six cards (two live client sites and Ask Hana in, AP Nav out; it stays
+  in the GitHub README). Auto-fit left a lone card at 1024 and 1440, so the grid uses fixed 1, 2 and 3
+  columns, which divide six evenly.
+- 2026-11-18 Human world gained "The name" (Hazeq, حاذق) after "Who I am": the meaning, the jack to
+  master aim, and instalments for clients in hard times. It was first placed before the contact card,
+  where the sky is turning to night and its ink measured 2.5:1; it now sits in the golden hour, centred
+  so it does not repeat the left-aligned borders intro. Its accent purple is `#524672` (5.0:1 measured
+  over the sky; `#6b5b95` read 3.4:1 for body-size italics). The shared eyebrow ink moved from `#9a6a7e`
+  (2.7:1) to `#644451` (5.0:1) for every section.

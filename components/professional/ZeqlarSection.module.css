@@ -156,6 +156,9 @@
   padding: 20px 18px;
   display: flex;
   flex-direction: column-reverse;
+  /* column-reverse packs from the bottom; flex-end pins every value to the
+     top so a note that wraps to two lines cannot push its number down. */
+  justify-content: flex-end;
   gap: 6px;
 }
 .factValue {

@@ -170,29 +170,31 @@ export default function Professional({
         <div data-reveal="0" className={styles.thrivePanel}>
           <div className={styles.thriveBar} />
           <div className={styles.thriveGlow} />
-          <div className={styles.thriveLabel}>// WHERE_I_THRIVE</div>
+          <div className={styles.thriveLabel}>// OPEN_TO_NEW_ROLES</div>
           <h2 className={styles.thriveH2}>
-            I&apos;m a{" "}
-            <span className={styles.thriveAccent}>solutions engineer</span>, not
-            just a coder.
+            I run a company, and I&apos;m{" "}
+            <span className={styles.thriveAccent}>looking for a team</span>.
           </h2>
           <p className={styles.thrivePara}>
-            My edge was never writing the cleverest algorithm. It is standing in
-            the room between the client and the technology, hearing what someone
-            actually needs and turning it into something real that ships. I am
-            happiest where the conversation matters as much as the code.
+            I&apos;m 21. I started ZEQLAR because businesses around me needed
+            software and I knew how to build it, and running it has taught me more
+            than anything else I&apos;ve done. I learned to listen before I build,
+            to design screens people enjoy using, and to stand behind the work
+            after it ships. I design every interface myself now, and every client
+            gets that care.
           </p>
           <p className={`${styles.thrivePara} ${styles.thriveParaLast}`}>
-            I read people as well as I read systems. I pick up new concepts
-            fast, I stay ahead of where the technology is heading and I translate
-            between engineers and decision-makers without anything getting lost
-            in between. So the roles I am chasing are not pure AI or ML
-            programming seats. They are the ones{" "}
+            I also know how much I still have to learn, and the quickest way to
+            grow is to work beside people who are better than me. So I&apos;m
+            looking for a full-time role in AI engineering, full stack
+            development, or anywhere{" "}
             <span className={styles.thriveStrong}>
-              where client meets technology
+              client meets technology
             </span>
-            , where someone has to understand both sides and carry the outcome.
-            That is exactly where I do my best work.
+            , with ZEQLAR running alongside. I won&apos;t pretend to be the most
+            experienced person you&apos;ll interview. I can promise I&apos;ll learn
+            your stack quickly and work as hard as anyone you&apos;ve hired. Ask
+            anyone I&apos;ve worked with.
           </p>
           <div className={styles.pillars}>
             <div className={styles.pillar}>
@@ -206,18 +208,18 @@ export default function Professional({
             </div>
             <div className={styles.pillar}>
               <div className={styles.pillarNum}>02</div>
-              <h3 className={styles.pillarTitle}>Coordinate</h3>
+              <h3 className={styles.pillarTitle}>Design</h3>
               <p className={styles.pillarBody}>
-                Keep engineers, stakeholders and clients pulling toward the same
-                outcome, and keep everyone moving when it stalls.
+                Shape the interface and the content myself, so what ships works
+                well and feels good to use, on a phone first.
               </p>
             </div>
             <div className={styles.pillar}>
               <div className={styles.pillarNum}>03</div>
               <h3 className={styles.pillarTitle}>Adapt</h3>
               <p className={styles.pillarBody}>
-                Learn new tools and concepts fast, and stay a step ahead of where
-                the industry is heading next.
+                Learn new tools and concepts fast. I went from research papers to
+                live client sites in a year, and I&apos;m still speeding up.
               </p>
             </div>
           </div>

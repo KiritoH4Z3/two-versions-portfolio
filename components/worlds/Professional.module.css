@@ -349,10 +349,22 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 18px;
 }
+/* Six cards: fixed counts of 1, 2 and 3 columns divide them evenly at every
+   width, where auto-fit left a lone card on the last row at 1024 and 1440. */
 .projGridCompact {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 14px;
+}
+@media (min-width: 640px) {
+  .projGridCompact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1000px) {
+  .projGridCompact {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 .gridItem {
   display: grid;

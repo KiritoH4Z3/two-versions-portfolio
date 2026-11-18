@@ -53,7 +53,7 @@ WebGL. In every one of those cases the server-rendered heading is the finished p
 ```bash
 npm install
 npm run dev        # http://localhost:3011
-npm test           # 37 unit tests
+npm test           # 41 unit tests
 npm run build      # static export to ./out, then scripts/check-export.mjs reads it
 npm start          # serve ./out on 3011
 ```
@@ -67,6 +67,7 @@ npm start          # serve ./out on 3011
 | `tests/reveal-css.test.ts` | Content that is invisible until JavaScript runs |
 | `tests/assemble.test.ts` | The wordmark never finishing, or syllables landing out of order |
 | `tests/contrast.test.ts` | Text in the ZEQLAR section dropping near the AA floor |
+| `tests/count-format.test.ts` | A stat counter reading differently on the server render than on its last count-up frame, or a four-digit figure shown as "4000+" |
 | `scripts/check-export.mjs` | The built HTML: every route exported with its own title and canonical, no dash in served copy, real stat values, founder facts and JSON-LD present |
 
 ## Results
@@ -87,7 +88,7 @@ devices do better than these on main-thread time.
 - `/professional/` scores 91 and `/human/` 94, both 100 for accessibility, SEO and best practices.
 - The hero used to wait for JavaScript before it was visible (1,230 ms of render delay on the
   portrait). It is now painted from the server HTML (75 ms).
-- 37 unit tests in 5 files, plus the export check on every build.
+- 41 unit tests in 6 files, plus the export check on every build.
 
 ## Accepted risks
 
