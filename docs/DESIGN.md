@@ -149,3 +149,7 @@ count halves, pointer tilt is off (no hover), facts fold to a 2x2 grid. Touch ta
   so it does not repeat the left-aligned borders intro. Its accent purple is `#524672` (5.0:1 measured
   over the sky; `#6b5b95` read 3.4:1 for body-size italics). The shared eyebrow ink moved from `#9a6a7e`
   (2.7:1) to `#644451` (5.0:1) for every section.
+- 2026-11-18 Removed at Abdullah's request: the garden's two hills (he found them distracting; the sky,
+  sun and moon carry the walk on their own), and the faint solid ZEQLAR word that faded in behind the
+  particles once all three syllables landed. While the particle scene is live the heading now stays
+  transparent throughout; without WebGL or under reduced motion it is still the full solid wordmark.

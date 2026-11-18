@@ -35,9 +35,6 @@ export default function Human({
         <div className={`${styles.skyLayer} ${styles.skyNight}`} />
         <div className={styles.sun} />
         <div className={styles.moon} />
-        {/* hills after the sun so it sets behind them */}
-        <div className={`${styles.hill} ${styles.hillFar}`} />
-        <div className={`${styles.hill} ${styles.hillNear}`} />
       </div>
       <div className={styles.nightLayer}>
         <NightLights reduceMotion={reduceMotion} />

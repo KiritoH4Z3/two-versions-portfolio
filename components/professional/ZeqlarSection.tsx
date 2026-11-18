@@ -42,8 +42,6 @@ export default function ZeqlarSection({ reduceMotion }: { reduceMotion: boolean 
     if (next === lit.current) return;
     lit.current = next;
     partsRef.current?.setAttribute("data-lit", String(next));
-    // All three landed: the solid word glows faintly behind the particles.
-    stageRef.current?.toggleAttribute("data-settled", next === 3);
   }, []);
   const progress = useScrollProgress(stageRef, { reduceMotion, onChange: onProgress });
 

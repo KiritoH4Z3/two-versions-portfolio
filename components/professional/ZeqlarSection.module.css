@@ -52,11 +52,6 @@
 .stage[data-live] .wordmark {
   color: transparent;
 }
-/* Once every syllable has landed, the solid word returns as a faint core
-   behind the particles, which now float a little in front of it. */
-.stage[data-live][data-settled] .wordmark {
-  color: rgba(232, 169, 78, 0.16);
-}
 .scene {
   position: absolute;
   inset: 0;
